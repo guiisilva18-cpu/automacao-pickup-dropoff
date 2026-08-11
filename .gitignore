@@ -1,0 +1,8 @@
+.env
+logs/
+__pycache__/
+*.pyc
+
+# Materiais de referencia usados so pra desenhar o projeto (nao roda nada)
+DROPOFF.xlsx
+PICKUP.png
