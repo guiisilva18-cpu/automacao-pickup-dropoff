@@ -5,6 +5,9 @@ on:
     - cron: "30 11 * * *" # 08:30 BRT (UTC-3, sem horario de verao)
   workflow_dispatch: {} # permite disparo manual
 
+permissions:
+  contents: write # precisa pra commitar o historico/output de volta no repo
+
 jobs:
   dropoff-diario:
     runs-on: ubuntu-latest
@@ -23,4 +26,14 @@ jobs:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
           EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
           EMAIL_TO_DROPOFF: ${{ secrets.EMAIL_TO_DROPOFF }}
+      # Runner e' descartado ao final do job -- sem isso, o historico
+      # acumulado (dados/historico_dropoff.json) e as planilhas em output/
+      # somem e o proximo dia comecaria do zero.
+      - name: Salvar historico e planilhas de volta no repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dados/ output/
+          git diff --cached --quiet && echo "Nada novo pra commitar." || git commit -m "Atualiza historico e planilhas (run automatico)"
+          git push
 

@@ -22,6 +22,7 @@ com shouldTakingNum, timelyTakingNum, timelyTryTakingNum e
 timelyPickRateTotal por base — não precisa de chamada nova nem de uma
 chamada por base.
 """
+import json
 import logging
 import os
 import smtplib
@@ -44,8 +45,27 @@ load_dotenv()
 PASTA_BASE = Path(__file__).parent
 PASTA_LOGS = PASTA_BASE / "logs"
 PASTA_OUTPUT = PASTA_BASE / "output"
+PASTA_DADOS = PASTA_BASE / "dados"
 PASTA_LOGS.mkdir(exist_ok=True)
 PASTA_OUTPUT.mkdir(exist_ok=True)
+PASTA_DADOS.mkdir(exist_ok=True)
+
+# Histórico acumulado do mês (mesmo motivo do extrair_dropoff.py,
+# 2026-08-11): cada dia roda 1x e salva aqui, o painel mensal é montado a
+# partir desse arquivo em vez de rebuscar o mês inteiro na API toda vez.
+HISTORICO_PATH = PASTA_DADOS / "historico_pickup.json"
+
+
+def carregar_historico() -> dict[str, list[dict]]:
+    if not HISTORICO_PATH.exists():
+        return {}
+    return json.loads(HISTORICO_PATH.read_text(encoding="utf-8"))
+
+
+def salvar_historico(historico: dict[str, list[dict]]):
+    HISTORICO_PATH.write_text(
+        json.dumps(historico, ensure_ascii=False, indent=2), encoding="utf-8"
+    )
 
 logging.basicConfig(
     level=logging.INFO,
@@ -472,14 +492,16 @@ def main():
     dia = sys.argv[1] if len(sys.argv) > 1 else (date.today() - timedelta(days=1)).isoformat()
     dia_dt = date.fromisoformat(dia)
     inicio_mes = dia_dt.replace(day=1)
-    dias_do_mes = [
-        (inicio_mes + timedelta(days=i)).isoformat()
-        for i in range((dia_dt - inicio_mes).days + 1)
-    ]
 
-    log.info("Buscando Taxa de coleta no prazo (PICKUP) de %s a %s...", dias_do_mes[0], dia)
-    dados_mes = [(d, buscar_pickup(d)) for d in dias_do_mes]
-    registros_dia = dados_mes[-1][1]
+    log.info("Buscando Taxa de coleta no prazo (PICKUP) para %s (só esse dia)...", dia)
+    registros_dia = buscar_pickup(dia)
+
+    historico = carregar_historico()
+    historico[dia] = registros_dia
+    historico = {d: r for d, r in historico.items() if d >= inicio_mes.isoformat()}
+    salvar_historico(historico)
+
+    dados_mes = [(d, historico[d]) for d in sorted(historico.keys())]
 
     conteudo_diario = montar_planilha(dia, registros_dia).getvalue()
     conteudo_painel = montar_painel_mensal(dados_mes).getvalue()
