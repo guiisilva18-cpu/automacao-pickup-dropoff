@@ -1,0 +1,35 @@
+name: PICKUP diario
+
+on:
+  schedule:
+    - cron: "30 11 * * *" # 08:30 BRT (UTC-3, sem horario de verao)
+  workflow_dispatch: {} # permite disparo manual
+
+permissions:
+  contents: write # precisa pra commitar o historico/output de volta no repo
+
+jobs:
+  pickup-diario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      - run: python extrair_pickup.py
+        env:
+          JMS_TOKEN_INDICADORES: ${{ secrets.JMS_TOKEN_INDICADORES }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO_PICKUP: ${{ secrets.EMAIL_TO_PICKUP }}
+      - name: Salvar historico e planilhas de volta no repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dados/ output/
+          git diff --cached --quiet && echo "Nada novo pra commitar." || git commit -m "Atualiza historico e planilhas (run automatico)"
+          git push
