@@ -26,10 +26,20 @@ jobs:
           EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
           EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
           EMAIL_TO_PICKUP: ${{ secrets.EMAIL_TO_PICKUP }}
+      # PICKUP e DROPOFF rodam no mesmo horario (08:30) e podem terminar
+      # essa etapa quase juntos -- se um empurrar primeiro, o outro toma
+      # "rejected (fetch first)". Faz rebase e tenta de novo (ate 5x) em
+      # vez de falhar o job so por causa dessa corrida.
       - name: Salvar historico e planilhas de volta no repositorio
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add dados/ output/
-          git diff --cached --quiet && echo "Nada novo pra commitar." || git commit -m "Atualiza historico e planilhas (run automatico)"
+          git diff --cached --quiet && { echo "Nada novo pra commitar."; exit 0; }
+          git commit -m "Atualiza historico e planilhas PICKUP (run automatico)"
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            echo "Push rejeitado (tentativa $i), rebasando e tentando de novo..."
+            git pull --rebase origin master
+          done
           git push
