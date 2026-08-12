@@ -40,6 +40,8 @@ from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, PatternFill
 from openpyxl.utils import get_column_letter
 
+import gravar_mysql
+
 load_dotenv()
 
 PASTA_BASE = Path(__file__).parent
@@ -495,6 +497,13 @@ def main():
 
     log.info("Buscando Taxa de coleta no prazo (PICKUP) para %s (só esse dia)...", dia)
     registros_dia = buscar_pickup(dia)
+
+    # Alimenta o gráfico "Pickup" na tela Bases do App Ponto de Apoio
+    # (2026-08-12) — só o snapshot do dia, não bloqueia o e-mail se falhar.
+    try:
+        gravar_mysql.gravar_pickup(dia, registros_dia)
+    except Exception:
+        log.exception("Falha ao gravar pickup_diario no banco (e-mail segue normalmente)")
 
     historico = carregar_historico()
     historico[dia] = registros_dia
