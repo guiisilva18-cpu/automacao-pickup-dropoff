@@ -2,7 +2,7 @@ name: PICKUP diario
 
 on:
   schedule:
-    - cron: "30 11 * * *" # 08:30 BRT (UTC-3, sem horario de verao)
+    - cron: "0 10 * * *" # 07:00 BRT (UTC-3, sem horario de verao)
   workflow_dispatch: {} # permite disparo manual
 
 permissions:
@@ -32,7 +32,7 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_SSL: ${{ secrets.DB_SSL }}
-      # PICKUP e DROPOFF rodam no mesmo horario (08:30) e podem terminar
+      # PICKUP e DROPOFF rodam no mesmo horario (07:00) e podem terminar
       # essa etapa quase juntos -- se um empurrar primeiro, o outro toma
       # "rejected (fetch first)". Faz rebase e tenta de novo (ate 5x) em
       # vez de falhar o job so por causa dessa corrida.
