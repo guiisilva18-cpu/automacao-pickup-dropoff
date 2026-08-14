@@ -1,0 +1,41 @@
+name: TRANSFERENCIA diario
+
+on:
+  schedule:
+    - cron: "8 10 * * *" # 07:08 BRT (UTC-3, sem horario de verao) -- 3min depois do PICKUP/DROPOFF pra evitar corrida de push
+  workflow_dispatch: {} # permite disparo manual
+
+permissions:
+  contents: write # precisa pra commitar a planilha de volta no repo
+
+jobs:
+  transferencia-diario:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements.txt
+      - run: python extrair_transferencia.py
+        env:
+          JMS_TOKEN_INDICADORES: ${{ secrets.JMS_TOKEN_INDICADORES }}
+          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
+          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
+          EMAIL_TO_TRANSFERENCIA: ${{ secrets.EMAIL_TO_TRANSFERENCIA }}
+      - name: Salvar planilha de volta no repositorio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add output/
+          git diff --cached --quiet && { echo "Nada novo pra commitar."; exit 0; }
+          git commit -m "Atualiza planilha TRANSFERENCIA (run automatico)"
+          for i in 1 2 3 4 5; do
+            git push && exit 0
+            echo "Push rejeitado (tentativa $i), rebasando e tentando de novo..."
+            git pull --rebase origin master
+          done
+          git push
