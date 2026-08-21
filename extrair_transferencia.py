@@ -91,6 +91,14 @@ BASES_TRANSFERENCIA = {
     "PA WEPINK-ITP-SP": (2581, "311398"),
 }
 
+# Em cópia nos e-mails de Pickup/Dropoff/Transferência (pedido do
+# Guilherme, 21/08/2026).
+EMAILS_COPIA = [
+    "patricia.hora@jtexpress.com.br",
+    "ingrid.merces@jtexpress.com.br",
+    "fernando.santos@jtexpress.com.br",
+]
+
 
 class TokenExpiradoError(Exception):
     pass
@@ -206,6 +214,7 @@ def enviar_email(inicio: str, fim: str, nome_anexo: str, conteudo: bytes):
     msg["Subject"] = f"Taxa de Transferência - {inicio} a {fim}"
     msg["From"] = remetente
     msg["To"] = ", ".join(destinatarios)
+    msg["Cc"] = ", ".join(EMAILS_COPIA)
     msg.set_content(
         f"Segue em anexo a taxa de transferência (por base, data de chegada "
         f"planejada) do período de {inicio} a {fim}."

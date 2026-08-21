@@ -122,6 +122,14 @@ BASES_PICKUP = [
     "S-FREG-SP",
 ]
 
+# Em cópia nos e-mails de Pickup/Dropoff/Transferência (pedido do
+# Guilherme, 21/08/2026).
+EMAILS_COPIA = [
+    "patricia.hora@jtexpress.com.br",
+    "ingrid.merces@jtexpress.com.br",
+    "fernando.santos@jtexpress.com.br",
+]
+
 
 class TokenExpiradoError(Exception):
     pass
@@ -472,6 +480,7 @@ def enviar_email(dia: str, anexos: list[tuple[str, bytes]]):
     msg["Subject"] = f"Taxa de coleta no prazo (PICKUP) - {dia}"
     msg["From"] = remetente
     msg["To"] = ", ".join(destinatarios)
+    msg["Cc"] = ", ".join(EMAILS_COPIA)
     msg.set_content(
         f"Segue em anexo a taxa de coleta no prazo do dia {dia} "
         "(por base, origem TikTok, horário de término do prazo de coleta) "
