@@ -91,6 +91,30 @@ BASES_TRANSFERENCIA = {
     "PA WEPINK-ITP-SP": (2581, "311398"),
 }
 
+# As 14 bases franquia do relatório Pickup/Dropoff (mesma lista de
+# extrair_dropoff.BASES_PICKUP) -- networkId/networkCode obtidos em
+# 26/08/2026 via businessindicator/getNetworksDecideByType/pageNetworksByType
+# (payload precisa de type=336, parentNetworkId=[129], searchKey=<nome>;
+# sem esses campos o endpoint devolve erro genérico de "chamada entre
+# serviços"). Pedido do Guilherme, 26/08/2026: incluir as bases também na
+# Taxa de Transferência, além das 19 PAs.
+BASES_FRANQUIA_TRANSFERENCIA = {
+    "CARAP 02-SP": (3057, "311459"),
+    "CARAP-SP": (1644, "319129"),
+    "CHM-SP": (673, "311131"),
+    "CLP-SP": (2632, "311407"),
+    "COT-SP": (1475, "319118"),
+    "F JND-SP": (2170, "311104"),
+    "F S-JRG-SP": (2522, "311392"),
+    "ITUP-SP": (2057, "311191"),
+    "JND 02-SP": (2780, "311439"),
+    "JND-SP": (1014, "311115"),
+    "OSC 02-SP": (2694, "311423"),
+    "OSC-SP": (1140, "311138"),
+    "S-CSVD-SP": (989, "311103"),
+    "S-FREG-SP": (1419, "311147"),
+}
+
 # Em cópia nos e-mails de Pickup/Dropoff/Transferência (pedido do
 # Guilherme, 21/08/2026).
 EMAILS_COPIA = [
@@ -134,29 +158,38 @@ def _buscar_registro_base(base: str, network_id: int, network_code: str, inicio:
 
 
 def buscar_transferencia(inicio: str, fim: str) -> list[dict]:
-    """1 chamada por base (esse endpoint não devolve todas de uma vez).
-    Base sem nenhuma entrega no período vem com os totais zerados."""
+    """1 chamada por site (esse endpoint não devolve todas de uma vez).
+    Site sem nenhuma entrega no período vem com os totais zerados. Junta
+    as 19 PAs (BASES_TRANSFERENCIA) com as 14 bases franquia
+    (BASES_FRANQUIA_TRANSFERENCIA) num relatório só, marcando o tipo de
+    cada linha -- pedido do Guilherme, 26/08/2026."""
     saida = []
-    for base, (network_id, network_code) in BASES_TRANSFERENCIA.items():
-        bruto = _buscar_registro_base(base, network_id, network_code, inicio, fim)
+    todos = (
+        [(nome, "PA", ids) for nome, ids in BASES_TRANSFERENCIA.items()]
+        + [(nome, "Base", ids) for nome, ids in BASES_FRANQUIA_TRANSFERENCIA.items()]
+    )
+    for nome, tipo, (network_id, network_code) in todos:
+        bruto = _buscar_registro_base(nome, network_id, network_code, inicio, fim)
         total = bruto.get("deliveryTotal", 0) or 0
         no_prazo = bruto.get("deliveryOntimeTotal", 0) or 0
         fora_prazo = bruto.get("deliveryNotontimeTotal", 0) or 0
         taxa_pct = round(no_prazo / total * 100, 2) if total else None
         saida.append({
-            "base": base,
+            "base": nome,
+            "tipo": tipo,
             "entregas_total": total,
             "entregas_no_prazo": no_prazo,
             "entregas_fora_prazo": fora_prazo,
             "taxa_pct": taxa_pct,
         })
         if not total:
-            log.warning("Base %s sem entregas no período %s a %s", base, inicio, fim)
+            log.warning("%s %s sem entregas no período %s a %s", tipo, nome, inicio, fim)
     return saida
 
 
 CABECALHO = [
     "Base",
+    "Tipo",
     "Total de Entregas",
     "Entregues no Prazo",
     "Fora do Prazo",
@@ -175,6 +208,7 @@ def montar_planilha(inicio: str, fim: str, registros: list[dict]) -> BytesIO:
     for r in registros:
         ws.append([
             r["base"],
+            r["tipo"],
             r["entregas_total"],
             r["entregas_no_prazo"],
             r["entregas_fora_prazo"],
@@ -185,12 +219,12 @@ def montar_planilha(inicio: str, fim: str, registros: list[dict]) -> BytesIO:
         cel.font = FONTE_HEADER
         cel.fill = PREENCHIMENTO_HEADER
         cel.alignment = Alignment(wrap_text=True, vertical="center")
-    for row in ws.iter_rows(min_row=2, min_col=5, max_col=5, max_row=len(registros) + 1):
+    for row in ws.iter_rows(min_row=2, min_col=6, max_col=6, max_row=len(registros) + 1):
         row[0].number_format = "0.00%"
-    ws.auto_filter.ref = f"A1:E{len(registros) + 1}"
+    ws.auto_filter.ref = f"A1:F{len(registros) + 1}"
     ws.freeze_panes = "A2"
     ws.row_dimensions[1].height = 22
-    for i, largura in enumerate([22, 18, 18, 16, 20], start=1):
+    for i, largura in enumerate([22, 10, 18, 18, 16, 20], start=1):
         ws.column_dimensions[get_column_letter(i)].width = largura
 
     buffer = BytesIO()
@@ -216,8 +250,8 @@ def enviar_email(inicio: str, fim: str, nome_anexo: str, conteudo: bytes):
     msg["To"] = ", ".join(destinatarios)
     msg["Cc"] = ", ".join(EMAILS_COPIA)
     msg.set_content(
-        f"Segue em anexo a taxa de transferência (por base, data de chegada "
-        f"planejada) do período de {inicio} a {fim}."
+        f"Segue em anexo a taxa de transferência (por PA e por base franquia, "
+        f"data de chegada planejada) do período de {inicio} a {fim}."
     )
     msg.add_attachment(
         conteudo,
