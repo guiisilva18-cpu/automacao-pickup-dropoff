@@ -1,0 +1,3107 @@
+{
+  "2026-08-01": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2245,
+      "entregas_no_prazo": 2235,
+      "entregas_fora_prazo": 10,
+      "taxa_pct": 99.55
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 3853,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 3853,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 211,
+      "entregas_no_prazo": 210,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.53
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 30979,
+      "entregas_no_prazo": 30591,
+      "entregas_fora_prazo": 388,
+      "taxa_pct": 98.75
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 7817,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 7817,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 10688,
+      "entregas_no_prazo": 9586,
+      "entregas_fora_prazo": 1102,
+      "taxa_pct": 89.69
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 7868,
+      "entregas_no_prazo": 7734,
+      "entregas_fora_prazo": 134,
+      "taxa_pct": 98.3
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 164411,
+      "entregas_no_prazo": 131258,
+      "entregas_fora_prazo": 33153,
+      "taxa_pct": 79.84
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 6467,
+      "entregas_no_prazo": 6465,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.97
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1116,
+      "entregas_no_prazo": 1116,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 5032,
+      "entregas_no_prazo": 5030,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.96
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 1102,
+      "entregas_no_prazo": 1096,
+      "entregas_fora_prazo": 6,
+      "taxa_pct": 99.46
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 7307,
+      "entregas_no_prazo": 7307,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 1362,
+      "entregas_no_prazo": 1362,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 3877,
+      "entregas_no_prazo": 3759,
+      "entregas_fora_prazo": 118,
+      "taxa_pct": 96.96
+    }
+  ],
+  "2026-08-02": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 9187,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 9187,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 13276,
+      "entregas_no_prazo": 7106,
+      "entregas_fora_prazo": 6170,
+      "taxa_pct": 53.53
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1184,
+      "entregas_no_prazo": 1184,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 5548,
+      "entregas_no_prazo": 5548,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-03": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2333,
+      "entregas_no_prazo": 2299,
+      "entregas_fora_prazo": 34,
+      "taxa_pct": 98.54
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 3263,
+      "entregas_no_prazo": 2889,
+      "entregas_fora_prazo": 374,
+      "taxa_pct": 88.54
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 4508,
+      "entregas_no_prazo": 4502,
+      "entregas_fora_prazo": 6,
+      "taxa_pct": 99.87
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 236,
+      "entregas_no_prazo": 231,
+      "entregas_fora_prazo": 5,
+      "taxa_pct": 97.88
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 10766,
+      "entregas_no_prazo": 4454,
+      "entregas_fora_prazo": 6312,
+      "taxa_pct": 41.37
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 1,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 23,
+      "entregas_no_prazo": 22,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 95.65
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 2794,
+      "entregas_no_prazo": 2785,
+      "entregas_fora_prazo": 9,
+      "taxa_pct": 99.68
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 5927,
+      "entregas_no_prazo": 3754,
+      "entregas_fora_prazo": 2173,
+      "taxa_pct": 63.34
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 77202,
+      "entregas_no_prazo": 60284,
+      "entregas_fora_prazo": 16918,
+      "taxa_pct": 78.09
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 4150,
+      "entregas_no_prazo": 2685,
+      "entregas_fora_prazo": 1465,
+      "taxa_pct": 64.7
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 4365,
+      "entregas_no_prazo": 4364,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.98
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 1027,
+      "entregas_no_prazo": 1027,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 476,
+      "entregas_no_prazo": 476,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 3238,
+      "entregas_no_prazo": 3238,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 1339,
+      "entregas_no_prazo": 1248,
+      "entregas_fora_prazo": 91,
+      "taxa_pct": 93.2
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 2586,
+      "entregas_no_prazo": 2584,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.92
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 8257,
+      "entregas_no_prazo": 8257,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    }
+  ],
+  "2026-08-04": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 1881,
+      "entregas_no_prazo": 1850,
+      "entregas_fora_prazo": 31,
+      "taxa_pct": 98.35
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 1375,
+      "entregas_no_prazo": 786,
+      "entregas_fora_prazo": 589,
+      "taxa_pct": 57.16
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 1765,
+      "entregas_no_prazo": 1765,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 820,
+      "entregas_no_prazo": 804,
+      "entregas_fora_prazo": 16,
+      "taxa_pct": 98.05
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 10574,
+      "entregas_no_prazo": 6147,
+      "entregas_fora_prazo": 4427,
+      "taxa_pct": 58.13
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 17157,
+      "entregas_no_prazo": 4901,
+      "entregas_fora_prazo": 12256,
+      "taxa_pct": 28.57
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 17448,
+      "entregas_no_prazo": 16661,
+      "entregas_fora_prazo": 787,
+      "taxa_pct": 95.49
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 75437,
+      "entregas_no_prazo": 48724,
+      "entregas_fora_prazo": 26713,
+      "taxa_pct": 64.59
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 4170,
+      "entregas_no_prazo": 2998,
+      "entregas_fora_prazo": 1172,
+      "taxa_pct": 71.89
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 5907,
+      "entregas_no_prazo": 5782,
+      "entregas_fora_prazo": 125,
+      "taxa_pct": 97.88
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 929,
+      "entregas_no_prazo": 929,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 704,
+      "entregas_no_prazo": 703,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.86
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 19,
+      "entregas_no_prazo": 19,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 977,
+      "entregas_no_prazo": 973,
+      "entregas_fora_prazo": 4,
+      "taxa_pct": 99.59
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 1674,
+      "entregas_no_prazo": 1674,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 5440,
+      "entregas_no_prazo": 5436,
+      "entregas_fora_prazo": 4,
+      "taxa_pct": 99.93
+    }
+  ],
+  "2026-08-05": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2747,
+      "entregas_no_prazo": 2698,
+      "entregas_fora_prazo": 49,
+      "taxa_pct": 98.22
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 3641,
+      "entregas_no_prazo": 3589,
+      "entregas_fora_prazo": 52,
+      "taxa_pct": 98.57
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 1697,
+      "entregas_no_prazo": 1695,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.88
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 394,
+      "entregas_no_prazo": 391,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.24
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 11107,
+      "entregas_no_prazo": 8904,
+      "entregas_fora_prazo": 2203,
+      "taxa_pct": 80.17
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 60478,
+      "entregas_no_prazo": 58373,
+      "entregas_fora_prazo": 2105,
+      "taxa_pct": 96.52
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 5758,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 5758,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 7489,
+      "entregas_no_prazo": 5984,
+      "entregas_fora_prazo": 1505,
+      "taxa_pct": 79.9
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 11179,
+      "entregas_no_prazo": 4108,
+      "entregas_fora_prazo": 7071,
+      "taxa_pct": 36.75
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 74536,
+      "entregas_no_prazo": 55942,
+      "entregas_fora_prazo": 18594,
+      "taxa_pct": 75.05
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 4269,
+      "entregas_no_prazo": 2839,
+      "entregas_fora_prazo": 1430,
+      "taxa_pct": 66.5
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1444,
+      "entregas_no_prazo": 1444,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 5947,
+      "entregas_no_prazo": 5944,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.95
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 638,
+      "entregas_no_prazo": 636,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.69
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 319,
+      "entregas_no_prazo": 299,
+      "entregas_fora_prazo": 20,
+      "taxa_pct": 93.73
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 622,
+      "entregas_no_prazo": 622,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 537,
+      "entregas_no_prazo": 525,
+      "entregas_fora_prazo": 12,
+      "taxa_pct": 97.77
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 2866,
+      "entregas_no_prazo": 2861,
+      "entregas_fora_prazo": 5,
+      "taxa_pct": 99.83
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 6813,
+      "entregas_no_prazo": 6761,
+      "entregas_fora_prazo": 52,
+      "taxa_pct": 99.24
+    }
+  ],
+  "2026-08-06": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2232,
+      "entregas_no_prazo": 2210,
+      "entregas_fora_prazo": 22,
+      "taxa_pct": 99.01
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 6062,
+      "entregas_no_prazo": 3539,
+      "entregas_fora_prazo": 2523,
+      "taxa_pct": 58.38
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 1819,
+      "entregas_no_prazo": 1819,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 639,
+      "entregas_no_prazo": 639,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 43893,
+      "entregas_no_prazo": 43132,
+      "entregas_fora_prazo": 761,
+      "taxa_pct": 98.27
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 8597,
+      "entregas_no_prazo": 1585,
+      "entregas_fora_prazo": 7012,
+      "taxa_pct": 18.44
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 9611,
+      "entregas_no_prazo": 9438,
+      "entregas_fora_prazo": 173,
+      "taxa_pct": 98.2
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 12648,
+      "entregas_no_prazo": 4713,
+      "entregas_fora_prazo": 7935,
+      "taxa_pct": 37.26
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 72330,
+      "entregas_no_prazo": 51593,
+      "entregas_fora_prazo": 20737,
+      "taxa_pct": 71.33
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 2669,
+      "entregas_no_prazo": 1914,
+      "entregas_fora_prazo": 755,
+      "taxa_pct": 71.71
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1859,
+      "entregas_no_prazo": 1859,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 5555,
+      "entregas_no_prazo": 5174,
+      "entregas_fora_prazo": 381,
+      "taxa_pct": 93.14
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 303,
+      "entregas_no_prazo": 303,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 219,
+      "entregas_no_prazo": 219,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 6312,
+      "entregas_no_prazo": 6312,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 730,
+      "entregas_no_prazo": 726,
+      "entregas_fora_prazo": 4,
+      "taxa_pct": 99.45
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 1600,
+      "entregas_no_prazo": 1586,
+      "entregas_fora_prazo": 14,
+      "taxa_pct": 99.12
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 5454,
+      "entregas_no_prazo": 5354,
+      "entregas_fora_prazo": 100,
+      "taxa_pct": 98.17
+    }
+  ],
+  "2026-08-07": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2306,
+      "entregas_no_prazo": 2277,
+      "entregas_fora_prazo": 29,
+      "taxa_pct": 98.74
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 2876,
+      "entregas_no_prazo": 1475,
+      "entregas_fora_prazo": 1401,
+      "taxa_pct": 51.29
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 1902,
+      "entregas_no_prazo": 1902,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 605,
+      "entregas_no_prazo": 598,
+      "entregas_fora_prazo": 7,
+      "taxa_pct": 98.84
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 9655,
+      "entregas_no_prazo": 4803,
+      "entregas_fora_prazo": 4852,
+      "taxa_pct": 49.75
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 39749,
+      "entregas_no_prazo": 37883,
+      "entregas_fora_prazo": 1866,
+      "taxa_pct": 95.31
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 7448,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 7448,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 3477,
+      "entregas_no_prazo": 2521,
+      "entregas_fora_prazo": 956,
+      "taxa_pct": 72.51
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 13553,
+      "entregas_no_prazo": 3995,
+      "entregas_fora_prazo": 9558,
+      "taxa_pct": 29.48
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 83173,
+      "entregas_no_prazo": 60862,
+      "entregas_fora_prazo": 22311,
+      "taxa_pct": 73.18
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 4271,
+      "entregas_no_prazo": 2780,
+      "entregas_fora_prazo": 1491,
+      "taxa_pct": 65.09
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1421,
+      "entregas_no_prazo": 1421,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 6674,
+      "entregas_no_prazo": 6664,
+      "entregas_fora_prazo": 10,
+      "taxa_pct": 99.85
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 462,
+      "entregas_no_prazo": 461,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.78
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 345,
+      "entregas_no_prazo": 342,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.13
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 5844,
+      "entregas_no_prazo": 5844,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 773,
+      "entregas_no_prazo": 720,
+      "entregas_fora_prazo": 53,
+      "taxa_pct": 93.14
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 755,
+      "entregas_no_prazo": 753,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.74
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 4341,
+      "entregas_no_prazo": 4329,
+      "entregas_fora_prazo": 12,
+      "taxa_pct": 99.72
+    }
+  ],
+  "2026-08-08": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 1959,
+      "entregas_no_prazo": 1948,
+      "entregas_fora_prazo": 11,
+      "taxa_pct": 99.44
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 3345,
+      "entregas_no_prazo": 3306,
+      "entregas_fora_prazo": 39,
+      "taxa_pct": 98.83
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 9996,
+      "entregas_no_prazo": 9996,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 67131,
+      "entregas_no_prazo": 65481,
+      "entregas_fora_prazo": 1650,
+      "taxa_pct": 97.54
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 8317,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 8317,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 2097,
+      "entregas_no_prazo": 1683,
+      "entregas_fora_prazo": 414,
+      "taxa_pct": 80.26
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 16610,
+      "entregas_no_prazo": 3468,
+      "entregas_fora_prazo": 13142,
+      "taxa_pct": 20.88
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 64911,
+      "entregas_no_prazo": 52572,
+      "entregas_fora_prazo": 12339,
+      "taxa_pct": 80.99
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 2682,
+      "entregas_no_prazo": 2012,
+      "entregas_fora_prazo": 670,
+      "taxa_pct": 75.02
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1345,
+      "entregas_no_prazo": 1345,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 3902,
+      "entregas_no_prazo": 3902,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 5704,
+      "entregas_no_prazo": 5704,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 619,
+      "entregas_no_prazo": 600,
+      "entregas_fora_prazo": 19,
+      "taxa_pct": 96.93
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 3225,
+      "entregas_no_prazo": 3183,
+      "entregas_fora_prazo": 42,
+      "taxa_pct": 98.7
+    }
+  ],
+  "2026-08-09": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 6894,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 6894,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 20033,
+      "entregas_no_prazo": 9703,
+      "entregas_fora_prazo": 10330,
+      "taxa_pct": 48.44
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1215,
+      "entregas_no_prazo": 1215,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 3206,
+      "entregas_no_prazo": 3206,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-10": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 3704,
+      "entregas_no_prazo": 3681,
+      "entregas_fora_prazo": 23,
+      "taxa_pct": 99.38
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 6073,
+      "entregas_no_prazo": 5404,
+      "entregas_fora_prazo": 669,
+      "taxa_pct": 88.98
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 3553,
+      "entregas_no_prazo": 3521,
+      "entregas_fora_prazo": 32,
+      "taxa_pct": 99.1
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 576,
+      "entregas_no_prazo": 559,
+      "entregas_fora_prazo": 17,
+      "taxa_pct": 97.05
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 20,
+      "entregas_no_prazo": 18,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 90.0
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 197,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 197,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 4266,
+      "entregas_no_prazo": 4248,
+      "entregas_fora_prazo": 18,
+      "taxa_pct": 99.58
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 10086,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 10086,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 140784,
+      "entregas_no_prazo": 117297,
+      "entregas_fora_prazo": 23487,
+      "taxa_pct": 83.32
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 4268,
+      "entregas_no_prazo": 3209,
+      "entregas_fora_prazo": 1059,
+      "taxa_pct": 75.19
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 5771,
+      "entregas_no_prazo": 5765,
+      "entregas_fora_prazo": 6,
+      "taxa_pct": 99.9
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 425,
+      "entregas_no_prazo": 425,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 407,
+      "entregas_no_prazo": 404,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.26
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 4535,
+      "entregas_no_prazo": 4535,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 1564,
+      "entregas_no_prazo": 1559,
+      "entregas_fora_prazo": 5,
+      "taxa_pct": 99.68
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 1421,
+      "entregas_no_prazo": 1421,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 6074,
+      "entregas_no_prazo": 6055,
+      "entregas_fora_prazo": 19,
+      "taxa_pct": 99.69
+    }
+  ],
+  "2026-08-11": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2439,
+      "entregas_no_prazo": 2408,
+      "entregas_fora_prazo": 31,
+      "taxa_pct": 98.73
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 2251,
+      "entregas_no_prazo": 900,
+      "entregas_fora_prazo": 1351,
+      "taxa_pct": 39.98
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 1953,
+      "entregas_no_prazo": 1951,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.9
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 1270,
+      "entregas_no_prazo": 1219,
+      "entregas_fora_prazo": 51,
+      "taxa_pct": 95.98
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 15760,
+      "entregas_no_prazo": 5737,
+      "entregas_fora_prazo": 10023,
+      "taxa_pct": 36.4
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 9476,
+      "entregas_no_prazo": 45,
+      "entregas_fora_prazo": 9431,
+      "taxa_pct": 0.47
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 3981,
+      "entregas_no_prazo": 3760,
+      "entregas_fora_prazo": 221,
+      "taxa_pct": 94.45
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 5677,
+      "entregas_no_prazo": 5053,
+      "entregas_fora_prazo": 624,
+      "taxa_pct": 89.01
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 876,
+      "entregas_no_prazo": 876,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 769,
+      "entregas_no_prazo": 764,
+      "entregas_fora_prazo": 5,
+      "taxa_pct": 99.35
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 2630,
+      "entregas_no_prazo": 2630,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 690,
+      "entregas_no_prazo": 687,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.57
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 1363,
+      "entregas_no_prazo": 1344,
+      "entregas_fora_prazo": 19,
+      "taxa_pct": 98.61
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 4090,
+      "entregas_no_prazo": 553,
+      "entregas_fora_prazo": 3537,
+      "taxa_pct": 13.52
+    }
+  ],
+  "2026-08-12": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2569,
+      "entregas_no_prazo": 2537,
+      "entregas_fora_prazo": 32,
+      "taxa_pct": 98.75
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 2638,
+      "entregas_no_prazo": 2563,
+      "entregas_fora_prazo": 75,
+      "taxa_pct": 97.16
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 2678,
+      "entregas_no_prazo": 2674,
+      "entregas_fora_prazo": 4,
+      "taxa_pct": 99.85
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 1054,
+      "entregas_no_prazo": 989,
+      "entregas_fora_prazo": 65,
+      "taxa_pct": 93.83
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 23395,
+      "entregas_no_prazo": 17286,
+      "entregas_fora_prazo": 6109,
+      "taxa_pct": 73.89
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 53238,
+      "entregas_no_prazo": 42663,
+      "entregas_fora_prazo": 10575,
+      "taxa_pct": 80.14
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 4095,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 4095,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 11358,
+      "entregas_no_prazo": 8716,
+      "entregas_fora_prazo": 2642,
+      "taxa_pct": 76.74
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 10081,
+      "entregas_no_prazo": 3955,
+      "entregas_fora_prazo": 6126,
+      "taxa_pct": 39.23
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 2559,
+      "entregas_no_prazo": 1787,
+      "entregas_fora_prazo": 772,
+      "taxa_pct": 69.83
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1695,
+      "entregas_no_prazo": 1695,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 6195,
+      "entregas_no_prazo": 6141,
+      "entregas_fora_prazo": 54,
+      "taxa_pct": 99.13
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 442,
+      "entregas_no_prazo": 442,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 944,
+      "entregas_no_prazo": 941,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.68
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 903,
+      "entregas_no_prazo": 860,
+      "entregas_fora_prazo": 43,
+      "taxa_pct": 95.24
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 1018,
+      "entregas_no_prazo": 1012,
+      "entregas_fora_prazo": 6,
+      "taxa_pct": 99.41
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 4839,
+      "entregas_no_prazo": 4258,
+      "entregas_fora_prazo": 581,
+      "taxa_pct": 87.99
+    }
+  ],
+  "2026-08-13": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 1945,
+      "entregas_no_prazo": 1910,
+      "entregas_fora_prazo": 35,
+      "taxa_pct": 98.2
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 4842,
+      "entregas_no_prazo": 2691,
+      "entregas_fora_prazo": 2151,
+      "taxa_pct": 55.58
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 2455,
+      "entregas_no_prazo": 2441,
+      "entregas_fora_prazo": 14,
+      "taxa_pct": 99.43
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 651,
+      "entregas_no_prazo": 648,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.54
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 29113,
+      "entregas_no_prazo": 22489,
+      "entregas_fora_prazo": 6624,
+      "taxa_pct": 77.25
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 34438,
+      "entregas_no_prazo": 33343,
+      "entregas_fora_prazo": 1095,
+      "taxa_pct": 96.82
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 6572,
+      "entregas_no_prazo": 627,
+      "entregas_fora_prazo": 5945,
+      "taxa_pct": 9.54
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 44565,
+      "entregas_no_prazo": 37579,
+      "entregas_fora_prazo": 6986,
+      "taxa_pct": 84.32
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 15570,
+      "entregas_no_prazo": 15518,
+      "entregas_fora_prazo": 52,
+      "taxa_pct": 99.67
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 73096,
+      "entregas_no_prazo": 72973,
+      "entregas_fora_prazo": 123,
+      "taxa_pct": 99.83
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 2718,
+      "entregas_no_prazo": 1757,
+      "entregas_fora_prazo": 961,
+      "taxa_pct": 64.64
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1453,
+      "entregas_no_prazo": 1453,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 7661,
+      "entregas_no_prazo": 7326,
+      "entregas_fora_prazo": 335,
+      "taxa_pct": 95.63
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 426,
+      "entregas_no_prazo": 423,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.3
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 307,
+      "entregas_no_prazo": 289,
+      "entregas_fora_prazo": 18,
+      "taxa_pct": 94.14
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 9170,
+      "entregas_no_prazo": 9170,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 804,
+      "entregas_no_prazo": 795,
+      "entregas_fora_prazo": 9,
+      "taxa_pct": 98.88
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 829,
+      "entregas_no_prazo": 820,
+      "entregas_fora_prazo": 9,
+      "taxa_pct": 98.91
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 5310,
+      "entregas_no_prazo": 5175,
+      "entregas_fora_prazo": 135,
+      "taxa_pct": 97.46
+    }
+  ],
+  "2026-08-14": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2002,
+      "entregas_no_prazo": 1977,
+      "entregas_fora_prazo": 25,
+      "taxa_pct": 98.75
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 1583,
+      "entregas_no_prazo": 659,
+      "entregas_fora_prazo": 924,
+      "taxa_pct": 41.63
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 2347,
+      "entregas_no_prazo": 2292,
+      "entregas_fora_prazo": 55,
+      "taxa_pct": 97.66
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 406,
+      "entregas_no_prazo": 398,
+      "entregas_fora_prazo": 8,
+      "taxa_pct": 98.03
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 10262,
+      "entregas_no_prazo": 4550,
+      "entregas_fora_prazo": 5712,
+      "taxa_pct": 44.34
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 22056,
+      "entregas_no_prazo": 20627,
+      "entregas_fora_prazo": 1429,
+      "taxa_pct": 93.52
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 7895,
+      "entregas_no_prazo": 1500,
+      "entregas_fora_prazo": 6395,
+      "taxa_pct": 19.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 26629,
+      "entregas_no_prazo": 22517,
+      "entregas_fora_prazo": 4112,
+      "taxa_pct": 84.56
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 20256,
+      "entregas_no_prazo": 10548,
+      "entregas_fora_prazo": 9708,
+      "taxa_pct": 52.07
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 65343,
+      "entregas_no_prazo": 65343,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 2239,
+      "entregas_no_prazo": 390,
+      "entregas_fora_prazo": 1849,
+      "taxa_pct": 17.42
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1332,
+      "entregas_no_prazo": 1332,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 7523,
+      "entregas_no_prazo": 7369,
+      "entregas_fora_prazo": 154,
+      "taxa_pct": 97.95
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 707,
+      "entregas_no_prazo": 704,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.58
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 4605,
+      "entregas_no_prazo": 4605,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 467,
+      "entregas_no_prazo": 429,
+      "entregas_fora_prazo": 38,
+      "taxa_pct": 91.86
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 730,
+      "entregas_no_prazo": 728,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.73
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 3647,
+      "entregas_no_prazo": 3452,
+      "entregas_fora_prazo": 195,
+      "taxa_pct": 94.65
+    }
+  ],
+  "2026-08-15": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 1735,
+      "entregas_no_prazo": 1688,
+      "entregas_fora_prazo": 47,
+      "taxa_pct": 97.29
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 2396,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 2396,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 24504,
+      "entregas_no_prazo": 23614,
+      "entregas_fora_prazo": 890,
+      "taxa_pct": 96.37
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 1,
+      "entregas_no_prazo": 1,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 296,
+      "entregas_no_prazo": 263,
+      "entregas_fora_prazo": 33,
+      "taxa_pct": 88.85
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 53890,
+      "entregas_no_prazo": 53890,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 1059,
+      "entregas_no_prazo": 1059,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1296,
+      "entregas_no_prazo": 1296,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 5525,
+      "entregas_no_prazo": 5523,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.96
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 6870,
+      "entregas_no_prazo": 6870,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 4924,
+      "entregas_no_prazo": 4889,
+      "entregas_fora_prazo": 35,
+      "taxa_pct": 99.29
+    }
+  ],
+  "2026-08-16": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 6694,
+      "entregas_no_prazo": 3821,
+      "entregas_fora_prazo": 2873,
+      "taxa_pct": 57.08
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 73630,
+      "entregas_no_prazo": 73630,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1192,
+      "entregas_no_prazo": 1192,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 4509,
+      "entregas_no_prazo": 4509,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-17": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 54,
+      "entregas_no_prazo": 54,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 1560,
+      "entregas_no_prazo": 1542,
+      "entregas_fora_prazo": 18,
+      "taxa_pct": 98.85
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 55869,
+      "entregas_no_prazo": 55869,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 101,
+      "entregas_no_prazo": 101,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 3826,
+      "entregas_no_prazo": 3826,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 2241,
+      "entregas_no_prazo": 2238,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.87
+    }
+  ],
+  "2026-08-18": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2430,
+      "entregas_no_prazo": 2383,
+      "entregas_fora_prazo": 47,
+      "taxa_pct": 98.07
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 1713,
+      "entregas_no_prazo": 977,
+      "entregas_fora_prazo": 736,
+      "taxa_pct": 57.03
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 757,
+      "entregas_no_prazo": 756,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.87
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 807,
+      "entregas_no_prazo": 800,
+      "entregas_fora_prazo": 7,
+      "taxa_pct": 99.13
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 3061,
+      "entregas_no_prazo": 3040,
+      "entregas_fora_prazo": 21,
+      "taxa_pct": 99.31
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 24993,
+      "entregas_no_prazo": 23346,
+      "entregas_fora_prazo": 1647,
+      "taxa_pct": 93.41
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 3050,
+      "entregas_no_prazo": 2760,
+      "entregas_fora_prazo": 290,
+      "taxa_pct": 90.49
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 8466,
+      "entregas_no_prazo": 8465,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.99
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 775,
+      "entregas_no_prazo": 774,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.87
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 535,
+      "entregas_no_prazo": 534,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.81
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 579,
+      "entregas_no_prazo": 579,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 1013,
+      "entregas_no_prazo": 1011,
+      "entregas_fora_prazo": 2,
+      "taxa_pct": 99.8
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 5903,
+      "entregas_no_prazo": 5839,
+      "entregas_fora_prazo": 64,
+      "taxa_pct": 98.92
+    }
+  ],
+  "2026-08-19": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 1704,
+      "entregas_no_prazo": 1637,
+      "entregas_fora_prazo": 67,
+      "taxa_pct": 96.07
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 2242,
+      "entregas_no_prazo": 2157,
+      "entregas_fora_prazo": 85,
+      "taxa_pct": 96.21
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 738,
+      "entregas_no_prazo": 733,
+      "entregas_fora_prazo": 5,
+      "taxa_pct": 99.32
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 444,
+      "entregas_no_prazo": 389,
+      "entregas_fora_prazo": 55,
+      "taxa_pct": 87.61
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 9711,
+      "entregas_no_prazo": 9711,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 25897,
+      "entregas_no_prazo": 22885,
+      "entregas_fora_prazo": 3012,
+      "taxa_pct": 88.37
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 7889,
+      "entregas_no_prazo": 7052,
+      "entregas_fora_prazo": 837,
+      "taxa_pct": 89.39
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 43757,
+      "entregas_no_prazo": 36955,
+      "entregas_fora_prazo": 6802,
+      "taxa_pct": 84.46
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 120648,
+      "entregas_no_prazo": 120648,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 2807,
+      "entregas_no_prazo": 2429,
+      "entregas_fora_prazo": 378,
+      "taxa_pct": 86.53
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 2070,
+      "entregas_no_prazo": 2070,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 4016,
+      "entregas_no_prazo": 3710,
+      "entregas_fora_prazo": 306,
+      "taxa_pct": 92.38
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 647,
+      "entregas_no_prazo": 647,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 167,
+      "entregas_no_prazo": 135,
+      "entregas_fora_prazo": 32,
+      "taxa_pct": 80.84
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 2277,
+      "entregas_no_prazo": 2277,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 6217,
+      "entregas_no_prazo": 6061,
+      "entregas_fora_prazo": 156,
+      "taxa_pct": 97.49
+    }
+  ],
+  "2026-08-20": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 2234,
+      "entregas_no_prazo": 2205,
+      "entregas_fora_prazo": 29,
+      "taxa_pct": 98.7
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 3607,
+      "entregas_no_prazo": 3463,
+      "entregas_fora_prazo": 144,
+      "taxa_pct": 96.01
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 700,
+      "entregas_no_prazo": 699,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.86
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 344,
+      "entregas_no_prazo": 344,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 12053,
+      "entregas_no_prazo": 12053,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 24681,
+      "entregas_no_prazo": 22789,
+      "entregas_fora_prazo": 1892,
+      "taxa_pct": 92.33
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 8351,
+      "entregas_no_prazo": 4424,
+      "entregas_fora_prazo": 3927,
+      "taxa_pct": 52.98
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 37330,
+      "entregas_no_prazo": 31302,
+      "entregas_fora_prazo": 6028,
+      "taxa_pct": 83.85
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 71130,
+      "entregas_no_prazo": 71130,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 3118,
+      "entregas_no_prazo": 2904,
+      "entregas_fora_prazo": 214,
+      "taxa_pct": 93.14
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1554,
+      "entregas_no_prazo": 1554,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 4562,
+      "entregas_no_prazo": 4221,
+      "entregas_fora_prazo": 341,
+      "taxa_pct": 92.53
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 662,
+      "entregas_no_prazo": 653,
+      "entregas_fora_prazo": 9,
+      "taxa_pct": 98.64
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 281,
+      "entregas_no_prazo": 271,
+      "entregas_fora_prazo": 10,
+      "taxa_pct": 96.44
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 4601,
+      "entregas_no_prazo": 4601,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 3903,
+      "entregas_no_prazo": 3859,
+      "entregas_fora_prazo": 44,
+      "taxa_pct": 98.87
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 6868,
+      "entregas_no_prazo": 6847,
+      "entregas_fora_prazo": 21,
+      "taxa_pct": 99.69
+    }
+  ],
+  "2026-08-21": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 1809,
+      "entregas_no_prazo": 1789,
+      "entregas_fora_prazo": 20,
+      "taxa_pct": 98.89
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 1470,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 1470,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 936,
+      "entregas_no_prazo": 916,
+      "entregas_fora_prazo": 20,
+      "taxa_pct": 97.86
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 523,
+      "entregas_no_prazo": 516,
+      "entregas_fora_prazo": 7,
+      "taxa_pct": 98.66
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 12081,
+      "entregas_no_prazo": 12081,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 22344,
+      "entregas_no_prazo": 21008,
+      "entregas_fora_prazo": 1336,
+      "taxa_pct": 94.02
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 10889,
+      "entregas_no_prazo": 5600,
+      "entregas_fora_prazo": 5289,
+      "taxa_pct": 51.43
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 30343,
+      "entregas_no_prazo": 27787,
+      "entregas_fora_prazo": 2556,
+      "taxa_pct": 91.58
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 60610,
+      "entregas_no_prazo": 60610,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 2539,
+      "entregas_no_prazo": 2532,
+      "entregas_fora_prazo": 7,
+      "taxa_pct": 99.72
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 988,
+      "entregas_no_prazo": 988,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 3793,
+      "entregas_no_prazo": 3789,
+      "entregas_fora_prazo": 4,
+      "taxa_pct": 99.89
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 418,
+      "entregas_no_prazo": 415,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.28
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 200,
+      "entregas_no_prazo": 191,
+      "entregas_fora_prazo": 9,
+      "taxa_pct": 95.5
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 4128,
+      "entregas_no_prazo": 4128,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 1933,
+      "entregas_no_prazo": 1930,
+      "entregas_fora_prazo": 3,
+      "taxa_pct": 99.84
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 6990,
+      "entregas_no_prazo": 6921,
+      "entregas_fora_prazo": 69,
+      "taxa_pct": 99.01
+    }
+  ],
+  "2026-08-22": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 1997,
+      "entregas_no_prazo": 1977,
+      "entregas_fora_prazo": 20,
+      "taxa_pct": 99.0
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 1642,
+      "entregas_no_prazo": 1587,
+      "entregas_fora_prazo": 55,
+      "taxa_pct": 96.65
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 9715,
+      "entregas_no_prazo": 9715,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 38129,
+      "entregas_no_prazo": 35028,
+      "entregas_fora_prazo": 3101,
+      "taxa_pct": 91.87
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 10651,
+      "entregas_no_prazo": 3949,
+      "entregas_fora_prazo": 6702,
+      "taxa_pct": 37.08
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 7398,
+      "entregas_no_prazo": 6168,
+      "entregas_fora_prazo": 1230,
+      "taxa_pct": 83.37
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 74999,
+      "entregas_no_prazo": 74999,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 1565,
+      "entregas_no_prazo": 1565,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 1250,
+      "entregas_no_prazo": 1250,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 3373,
+      "entregas_no_prazo": 3367,
+      "entregas_fora_prazo": 6,
+      "taxa_pct": 99.82
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 2248,
+      "entregas_no_prazo": 2248,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 4592,
+      "entregas_no_prazo": 4591,
+      "entregas_fora_prazo": 1,
+      "taxa_pct": 99.98
+    }
+  ],
+  "2026-08-23": [
+    {
+      "base": "PA CEA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA CUBBO-EMB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA ESTOCA-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA INFRA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MANDAE-SP",
+      "entregas_total": 8252,
+      "entregas_no_prazo": 8252,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA MELI-BRE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 02-SP",
+      "entregas_total": 8431,
+      "entregas_no_prazo": 6643,
+      "entregas_fora_prazo": 1788,
+      "taxa_pct": 78.79
+    },
+    {
+      "base": "PA MELI-CJM 04-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM 14-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA MELI-CJM-SP",
+      "entregas_total": 87318,
+      "entregas_no_prazo": 87318,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA NESTLE-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA OLIST-SP",
+      "entregas_total": 615,
+      "entregas_no_prazo": 615,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA RENNER-CAB-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SATELITAL-VGP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA SHOPEE-BRE-SP",
+      "entregas_total": 2892,
+      "entregas_no_prazo": 2892,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "PA VIA-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP 02-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "PA WEPINK-ITP-SP",
+      "entregas_total": 0,
+      "entregas_no_prazo": 0,
+      "entregas_fora_prazo": 0,
+      "taxa_pct": null
+    }
+  ]
+}
