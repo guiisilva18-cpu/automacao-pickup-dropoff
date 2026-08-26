@@ -1698,5 +1698,805 @@
       "total": 0,
       "taxa_pct": null
     }
+  ],
+  "2026-08-18": [
+    {
+      "base": "CARAP 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "pendente": 1,
+      "coletado": 1900,
+      "total": 1901,
+      "taxa_pct": 99.95
+    },
+    {
+      "base": "CHM-SP",
+      "pendente": 92,
+      "coletado": 3534,
+      "total": 3626,
+      "taxa_pct": 97.46
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "pendente": 1,
+      "coletado": 1924,
+      "total": 1925,
+      "taxa_pct": 99.95
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 4,
+      "coletado": 1530,
+      "total": 1534,
+      "taxa_pct": 99.74
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 0,
+      "coletado": 127,
+      "total": 127,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "OSC 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "OSC-SP",
+      "pendente": 46,
+      "coletado": 2184,
+      "total": 2230,
+      "taxa_pct": 97.94
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 15,
+      "coletado": 6350,
+      "total": 6365,
+      "taxa_pct": 99.76
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-19": [
+    {
+      "base": "CARAP 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "pendente": 78,
+      "coletado": 1145,
+      "total": 1223,
+      "taxa_pct": 93.62
+    },
+    {
+      "base": "CHM-SP",
+      "pendente": 11,
+      "coletado": 2297,
+      "total": 2308,
+      "taxa_pct": 99.52
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "pendente": 0,
+      "coletado": 1158,
+      "total": 1158,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 22,
+      "coletado": 0,
+      "total": 22,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 6,
+      "coletado": 1159,
+      "total": 1165,
+      "taxa_pct": 99.48
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 0,
+      "coletado": 109,
+      "total": 109,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "OSC 02-SP",
+      "pendente": 188,
+      "coletado": 0,
+      "total": 188,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "OSC-SP",
+      "pendente": 25,
+      "coletado": 1918,
+      "total": 1943,
+      "taxa_pct": 98.71
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 11,
+      "coletado": 4012,
+      "total": 4023,
+      "taxa_pct": 99.73
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-20": [
+    {
+      "base": "CARAP 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "pendente": 16,
+      "coletado": 1319,
+      "total": 1335,
+      "taxa_pct": 98.8
+    },
+    {
+      "base": "CHM-SP",
+      "pendente": 4,
+      "coletado": 2266,
+      "total": 2270,
+      "taxa_pct": 99.82
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "pendente": 6,
+      "coletado": 1195,
+      "total": 1201,
+      "taxa_pct": 99.5
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 1,
+      "coletado": 0,
+      "total": 1,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 0,
+      "coletado": 1134,
+      "total": 1134,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 0,
+      "coletado": 80,
+      "total": 80,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "OSC 02-SP",
+      "pendente": 0,
+      "coletado": 14,
+      "total": 14,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "OSC-SP",
+      "pendente": 0,
+      "coletado": 1824,
+      "total": 1824,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 94,
+      "coletado": 3727,
+      "total": 3821,
+      "taxa_pct": 97.54
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-21": [
+    {
+      "base": "CARAP 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "pendente": 0,
+      "coletado": 1136,
+      "total": 1136,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "CHM-SP",
+      "pendente": 0,
+      "coletado": 1802,
+      "total": 1802,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "pendente": 2,
+      "coletado": 984,
+      "total": 986,
+      "taxa_pct": 99.8
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 2,
+      "coletado": 67,
+      "total": 69,
+      "taxa_pct": 97.1
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 13,
+      "coletado": 0,
+      "total": 13,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 17,
+      "coletado": 998,
+      "total": 1015,
+      "taxa_pct": 98.33
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 0,
+      "coletado": 113,
+      "total": 113,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "OSC 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "OSC-SP",
+      "pendente": 28,
+      "coletado": 1315,
+      "total": 1343,
+      "taxa_pct": 97.92
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 27,
+      "coletado": 5905,
+      "total": 5932,
+      "taxa_pct": 99.54
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-22": [
+    {
+      "base": "CARAP 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "pendente": 0,
+      "coletado": 410,
+      "total": 410,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "CHM-SP",
+      "pendente": 0,
+      "coletado": 619,
+      "total": 619,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "pendente": 2,
+      "coletado": 96,
+      "total": 98,
+      "taxa_pct": 97.96
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 5,
+      "coletado": 0,
+      "total": 5,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 9,
+      "coletado": 0,
+      "total": 9,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 7,
+      "coletado": 526,
+      "total": 533,
+      "taxa_pct": 98.69
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 10,
+      "coletado": 54,
+      "total": 64,
+      "taxa_pct": 84.38
+    },
+    {
+      "base": "OSC 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "OSC-SP",
+      "pendente": 1,
+      "coletado": 288,
+      "total": 289,
+      "taxa_pct": 99.65
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 239,
+      "coletado": 1956,
+      "total": 2195,
+      "taxa_pct": 89.11
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-23": [
+    {
+      "base": "CARAP 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CHM-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "OSC 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "OSC-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-24": [
+    {
+      "base": "CARAP 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "pendente": 57,
+      "coletado": 2387,
+      "total": 2444,
+      "taxa_pct": 97.67
+    },
+    {
+      "base": "CHM-SP",
+      "pendente": 2,
+      "coletado": 3774,
+      "total": 3776,
+      "taxa_pct": 99.95
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "pendente": 1,
+      "coletado": 2703,
+      "total": 2704,
+      "taxa_pct": 99.96
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 45,
+      "coletado": 141,
+      "total": 186,
+      "taxa_pct": 75.81
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 17,
+      "coletado": 0,
+      "total": 17,
+      "taxa_pct": 0.0
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 1,
+      "coletado": 2387,
+      "total": 2388,
+      "taxa_pct": 99.96
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 0,
+      "coletado": 258,
+      "total": 258,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "OSC 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "OSC-SP",
+      "pendente": 0,
+      "coletado": 2781,
+      "total": 2781,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 285,
+      "coletado": 11107,
+      "total": 11392,
+      "taxa_pct": 97.5
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
+  ],
+  "2026-08-25": [
+    {
+      "base": "CARAP 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "pendente": 4,
+      "coletado": 1223,
+      "total": 1227,
+      "taxa_pct": 99.67
+    },
+    {
+      "base": "CHM-SP",
+      "pendente": 2,
+      "coletado": 2814,
+      "total": 2816,
+      "taxa_pct": 99.93
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "pendente": 9,
+      "coletado": 2048,
+      "total": 2057,
+      "taxa_pct": 99.56
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 69,
+      "coletado": 441,
+      "total": 510,
+      "taxa_pct": 86.47
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 22,
+      "coletado": 1321,
+      "total": 1343,
+      "taxa_pct": 98.36
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 0,
+      "coletado": 140,
+      "total": 140,
+      "taxa_pct": 100.0
+    },
+    {
+      "base": "OSC 02-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "OSC-SP",
+      "pendente": 3,
+      "coletado": 2109,
+      "total": 2112,
+      "taxa_pct": 99.86
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 141,
+      "coletado": 7704,
+      "total": 7845,
+      "taxa_pct": 98.2
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
   ]
 }
