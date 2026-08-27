@@ -2,7 +2,7 @@ name: TRANSFERENCIA diario
 
 on:
   schedule:
-    - cron: "8 10 * * *" # 07:08 BRT (UTC-3, sem horario de verao) -- 3min depois do PICKUP/DROPOFF pra evitar corrida de push
+    - cron: "8 8 * * *" # 05:08 BRT (UTC-3, sem horario de verao) -- 3min depois do PICKUP/DROPOFF pra evitar corrida de push
   workflow_dispatch: {} # permite disparo manual
 
 permissions:
