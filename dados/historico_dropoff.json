@@ -2644,24 +2644,24 @@
     },
     {
       "base": "F S-JRG-SP",
-      "pendente": 115,
-      "coletado": 297,
+      "pendente": 28,
+      "coletado": 384,
       "total": 412,
-      "taxa_pct": 72.09
+      "taxa_pct": 93.2
     },
     {
       "base": "ITUP-SP",
-      "pendente": 3,
-      "coletado": 0,
+      "pendente": 0,
+      "coletado": 3,
       "total": 3,
-      "taxa_pct": 0.0
+      "taxa_pct": 100.0
     },
     {
       "base": "JND 02-SP",
-      "pendente": 28,
-      "coletado": 1515,
+      "pendente": 24,
+      "coletado": 1519,
       "total": 1543,
-      "taxa_pct": 98.19
+      "taxa_pct": 98.44
     },
     {
       "base": "JND-SP",
@@ -2686,10 +2686,10 @@
     },
     {
       "base": "S-CSVD-SP",
-      "pendente": 21,
-      "coletado": 5787,
+      "pendente": 2,
+      "coletado": 5806,
       "total": 5808,
-      "taxa_pct": 99.64
+      "taxa_pct": 99.97
     },
     {
       "base": "S-FREG-SP",
