@@ -50,6 +50,12 @@ SEMANAS = [DADOS[k] for k in NOMES_SEMANAS]
 S_PRIMEIRA, S_ULTIMA = SEMANAS[0], SEMANAS[-1]
 S_PENULTIMA = SEMANAS[-2] if len(SEMANAS) > 1 else None
 TRANSF = DADOS.get("Transferência (período completo)", {"dias_com_dado": [], "por_base": []})
+# Rótulo dinâmico do período de Transferência atual (usado nos blocos de
+# "AGORA" do slide Progresso) -- antes era um texto fixo "01-23/08" que
+# ficava defasado toda vez que o histórico de transferência avançava.
+ROTULO_TRANSF_AGORA = (
+    f"01-{TRANSF['dias_com_dado'][-1][8:]}/08" if TRANSF["dias_com_dado"] else "—"
+)
 
 # Expedição usa o período completo até o último dia com dado de verdade,
 # independente de a semana em andamento entrar ou não na comparação
@@ -762,10 +768,10 @@ transf_cjm14 = _transf_agora("PA MELI-CJM 14-SP")
 transf_cubbo = _transf_agora("PA CUBBO-EMB-SP")
 _bloco_verdict(slide, x_col[0], y, Inches(5.9),
                "5. PA MELI-CJM 02-SP — pior Taxa de Transferência",
-               11.22, "01-17/08", transf_cjm02["taxa_pct"] if transf_cjm02 else None, "01-23/08")
+               11.22, "01-17/08", transf_cjm02["taxa_pct"] if transf_cjm02 else None, ROTULO_TRANSF_AGORA)
 _bloco_verdict(slide, x_col[1], y, Inches(5.9),
                "5b. PA CUBBO-EMB-SP — Taxa de Transferência",
-               62.90, "01-17/08", transf_cubbo["taxa_pct"] if transf_cubbo else None, "01-23/08")
+               62.90, "01-17/08", transf_cubbo["taxa_pct"] if transf_cubbo else None, ROTULO_TRANSF_AGORA)
 y += altura_bloco
 
 nota_cjm14 = (
@@ -789,7 +795,8 @@ rodape(slide, 10)
 # do eixo pra não misturar bases de comparação sem dizer.
 slide = nova_slide()
 cabecalho(slide, "Progresso 进展情况", "Melhoras Reais no Período — O Que Avançou 本期真实进步",
-          "Só indicadores com avanço confirmado nos dados. Pickup/Dropoff: Semana 2 → Semana 3. Transferência: 01–17/08 → 01–23/08.")
+          f"Só indicadores com avanço confirmado nos dados. Pickup/Dropoff: Semana 2 → {NOMES_SEMANAS[-1].split('(')[0].strip()}. "
+          f"Transferência: 01–17/08 → {ROTULO_TRANSF_AGORA}.")
 
 jnd_pk_agora = _taxa_pickup_agora("JND-SP")
 jnd_dp_agora = None
