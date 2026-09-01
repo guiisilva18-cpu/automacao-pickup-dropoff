@@ -10,6 +10,7 @@ import extrair_dropoff
 import extrair_pickup
 
 INICIO_MES = date(2026, 8, 1)
+FIM_MES = date(2026, 8, 31)
 
 
 def carregar_historico_transferencia() -> dict[str, list[dict]]:
@@ -30,7 +31,12 @@ def _semanas_disponiveis(ultimo_dia: str) -> list[tuple[str, list[str]]]:
     semana em andamento (incompleta) não entra como referência de
     comparação (pedido do Guilherme, 2026-08-18: "não vamos usar como
     referência"). Assim que a semana fechar 7 dias ela aparece sozinha na
-    próxima geração."""
+    próxima geração.
+    Exceção (pedido do Guilherme, 2026-09-01): quando o mês já fechou de
+    verdade (`ultimo_dia` alcança FIM_MES), o resto que sobra depois do
+    último bloco de 7 dias (29-31/08, só 3 dias) TAMBÉM entra, como semana
+    parcial final -- esses dias não vão mais mudar, então não é a mesma
+    situação de "semana ainda em andamento" que motivou a regra original."""
     fim = date.fromisoformat(ultimo_dia)
     semanas = []
     inicio_semana = INICIO_MES
@@ -41,6 +47,9 @@ def _semanas_disponiveis(ultimo_dia: str) -> list[tuple[str, list[str]]]:
         semanas.append((f"Semana {n} ({inicio_semana.day:02d}-{fim_semana.day:02d}/08)", dias))
         inicio_semana = fim_semana + timedelta(days=1)
         n += 1
+    if fim >= FIM_MES and inicio_semana <= fim:
+        dias = [(inicio_semana + timedelta(days=i)).isoformat() for i in range((fim - inicio_semana).days + 1)]
+        semanas.append((f"Semana {n} ({inicio_semana.day:02d}-{fim.day:02d}/08)", dias))
     return semanas
 
 
