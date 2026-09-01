@@ -34,8 +34,10 @@ def _semanas_disponiveis(ultimo_dia: str) -> list[tuple[str, list[str]]]:
     próxima geração.
     Exceção (pedido do Guilherme, 2026-09-01): quando o mês já fechou de
     verdade (`ultimo_dia` alcança FIM_MES), o resto que sobra depois do
-    último bloco de 7 dias (29-31/08, só 3 dias) TAMBÉM entra, como semana
-    parcial final -- esses dias não vão mais mudar, então não é a mesma
+    último bloco de 7 dias (29-31/08, só 3 dias) TAMBÉM entra -- juntado
+    dentro da última semana (vira 22-31/08, 10 dias) em vez de aparecer
+    como uma semana separada, já que são só 3 dias soltos e não valem uma
+    semana própria. Esses dias não vão mais mudar, então não é a mesma
     situação de "semana ainda em andamento" que motivou a regra original."""
     fim = date.fromisoformat(ultimo_dia)
     semanas = []
@@ -47,9 +49,11 @@ def _semanas_disponiveis(ultimo_dia: str) -> list[tuple[str, list[str]]]:
         semanas.append((f"Semana {n} ({inicio_semana.day:02d}-{fim_semana.day:02d}/08)", dias))
         inicio_semana = fim_semana + timedelta(days=1)
         n += 1
-    if fim >= FIM_MES and inicio_semana <= fim:
-        dias = [(inicio_semana + timedelta(days=i)).isoformat() for i in range((fim - inicio_semana).days + 1)]
-        semanas.append((f"Semana {n} ({inicio_semana.day:02d}-{fim.day:02d}/08)", dias))
+    if fim >= FIM_MES and inicio_semana <= fim and semanas:
+        nome_ultima, dias_ultima = semanas[-1]
+        dias_extra = [(inicio_semana + timedelta(days=i)).isoformat() for i in range((fim - inicio_semana).days + 1)]
+        inicio_bloco = date.fromisoformat(dias_ultima[0])
+        semanas[-1] = (f"Semana {n - 1} ({inicio_bloco.day:02d}-{fim.day:02d}/08)", dias_ultima + dias_extra)
     return semanas
 
 
