@@ -2,7 +2,10 @@ name: TRANSFERENCIA diario
 
 on:
   schedule:
-    - cron: "8 8 * * *" # 05:08 BRT (UTC-3, sem horario de verao) -- 3min depois do PICKUP/DROPOFF pra evitar corrida de push
+    - cron: "0 12 * * *" # 09:00 BRT (UTC-3, sem horario de verao) -- rodava junto com PICKUP/DROPOFF (05:05 BRT), mas o
+    # endpoint de Indicadores de Negocios (bigdataReport) ainda nao tinha fechado as estatisticas do dia anterior nesse
+    # horario e saia tudo zerado (descoberto 03/09/2026: mesma chamada, mesma janela de data, retornando 0 as 05h e
+    # dado real as 09h). Atrasado pra dar tempo do JMS consolidar antes de puxar o relatorio.
   workflow_dispatch: {} # permite disparo manual
 
 permissions:
