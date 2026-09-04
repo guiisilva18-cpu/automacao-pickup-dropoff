@@ -286,10 +286,10 @@
     },
     {
       "base": "S-CSVD-SP",
-      "pendente": 122,
-      "coletado": 5466,
+      "pendente": 121,
+      "coletado": 5467,
       "total": 5588,
-      "taxa_pct": 97.82
+      "taxa_pct": 97.83
     },
     {
       "base": "S-FREG-SP",
