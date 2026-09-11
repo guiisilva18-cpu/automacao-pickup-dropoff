@@ -930,10 +930,10 @@
     },
     {
       "base": "COT-SP",
-      "pendente": 29,
-      "coletado": 4284,
+      "pendente": 28,
+      "coletado": 4285,
       "total": 4313,
-      "taxa_pct": 99.33
+      "taxa_pct": 99.35
     },
     {
       "base": "F JND-SP",
