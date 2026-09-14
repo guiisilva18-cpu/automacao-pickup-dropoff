@@ -2,7 +2,7 @@ name: DROPOFF diario
 
 on:
   schedule:
-    - cron: "5 8 * * *" # 05:05 BRT (UTC-3, sem horario de verao) -- fora da hora cheia p/ evitar congestionamento de crons no GH Actions
+    - cron: "0 11 * * *" # 08:00 BRT (UTC-3, sem horario de verao) -- pedido do Guilherme, 14/09/2026 ("mudar pra 08:00 pra gerar os email")
   workflow_dispatch: {} # permite disparo manual
 
 permissions:

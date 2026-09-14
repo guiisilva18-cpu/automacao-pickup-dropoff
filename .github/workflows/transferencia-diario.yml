@@ -2,10 +2,12 @@ name: TRANSFERENCIA diario
 
 on:
   schedule:
-    - cron: "0 12 * * *" # 09:00 BRT (UTC-3, sem horario de verao) -- rodava junto com PICKUP/DROPOFF (05:05 BRT), mas o
-    # endpoint de Indicadores de Negocios (bigdataReport) ainda nao tinha fechado as estatisticas do dia anterior nesse
-    # horario e saia tudo zerado (descoberto 03/09/2026: mesma chamada, mesma janela de data, retornando 0 as 05h e
-    # dado real as 09h). Atrasado pra dar tempo do JMS consolidar antes de puxar o relatorio.
+    - cron: "0 11 * * *" # 08:00 BRT (UTC-3, sem horario de verao) -- pedido do Guilherme, 14/09/2026 ("mudar pra 08:00
+    # pra gerar os email"). ATENCAO: antes rodava as 09:00 BRT de proposito -- as 05:05 BRT (junto com PICKUP/DROPOFF)
+    # o endpoint de Indicadores de Negocios (bigdataReport) ainda nao tinha fechado as estatisticas do dia anterior e
+    # saia tudo zerado (descoberto 03/09/2026: mesma chamada, mesma janela de data, retornando 0 as 05h e dado real as
+    # 09h). Voltar pra 08:00 e 1h mais cedo que o horario ja validado -- se o email sair zerado de novo, e esse o motivo
+    # mais provavel (voltar pra "0 12 * * *" = 09:00 BRT resolve).
   workflow_dispatch: {} # permite disparo manual
 
 permissions:
