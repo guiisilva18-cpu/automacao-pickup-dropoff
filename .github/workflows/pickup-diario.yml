@@ -1,8 +1,10 @@
 name: PICKUP diario
 
 on:
-  schedule:
-    - cron: "0 11 * * *" # 08:00 BRT (UTC-3, sem horario de verao) -- pedido do Guilherme, 14/09/2026 ("mudar pra 08:00 pra gerar os email")
+  # schedule nativo removido em 15/09/2026: atrasava horas de forma consistente
+  # (chegou a rodar 5h+ depois do horario configurado). Gatilho unico agora e'
+  # a rotina agendada do Claude Code (nuvem), que dispara via workflow_dispatch
+  # as 09:00 BRT, junto com DROPOFF e TRANSFERENCIA.
   workflow_dispatch: {} # permite disparo manual
 
 permissions:
