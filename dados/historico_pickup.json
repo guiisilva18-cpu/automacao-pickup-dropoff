@@ -2026,5 +2026,161 @@
       "epop_com_imagem": 0,
       "taxa_poc_pct": null
     }
+  ],
+  "2026-09-14": [
+    {
+      "base": "CARAP 02-SP",
+      "qtd_a_coletar": 0,
+      "qtd_coletada_no_prazo": 0,
+      "soma_coletados_tentativas": 0,
+      "taxa_real_pct": null,
+      "taxa_com_tentativas_pct": null,
+      "epop_total": 0,
+      "epop_com_imagem": 0,
+      "taxa_poc_pct": null
+    },
+    {
+      "base": "CARAP-SP",
+      "qtd_a_coletar": 1149,
+      "qtd_coletada_no_prazo": 971,
+      "soma_coletados_tentativas": 974,
+      "taxa_real_pct": 84.51,
+      "taxa_com_tentativas_pct": 84.77,
+      "epop_total": 204,
+      "epop_com_imagem": 127,
+      "taxa_poc_pct": 62.25
+    },
+    {
+      "base": "CHM-SP",
+      "qtd_a_coletar": 17369,
+      "qtd_coletada_no_prazo": 10358,
+      "soma_coletados_tentativas": 17121,
+      "taxa_real_pct": 59.63,
+      "taxa_com_tentativas_pct": 98.57,
+      "epop_total": 673,
+      "epop_com_imagem": 460,
+      "taxa_poc_pct": 68.35
+    },
+    {
+      "base": "CLP-SP",
+      "qtd_a_coletar": 0,
+      "qtd_coletada_no_prazo": 0,
+      "soma_coletados_tentativas": 0,
+      "taxa_real_pct": null,
+      "taxa_com_tentativas_pct": null,
+      "epop_total": 0,
+      "epop_com_imagem": 0,
+      "taxa_poc_pct": null
+    },
+    {
+      "base": "COT-SP",
+      "qtd_a_coletar": 32359,
+      "qtd_coletada_no_prazo": 23979,
+      "soma_coletados_tentativas": 27082,
+      "taxa_real_pct": 74.1,
+      "taxa_com_tentativas_pct": 83.69,
+      "epop_total": 1151,
+      "epop_com_imagem": 942,
+      "taxa_poc_pct": 81.84
+    },
+    {
+      "base": "F JND-SP",
+      "qtd_a_coletar": 2212,
+      "qtd_coletada_no_prazo": 250,
+      "soma_coletados_tentativas": 2206,
+      "taxa_real_pct": 11.3,
+      "taxa_com_tentativas_pct": 99.73,
+      "epop_total": 43,
+      "epop_com_imagem": 22,
+      "taxa_poc_pct": 51.16
+    },
+    {
+      "base": "F S-JRG-SP",
+      "qtd_a_coletar": 7337,
+      "qtd_coletada_no_prazo": 4867,
+      "soma_coletados_tentativas": 7035,
+      "taxa_real_pct": 66.34,
+      "taxa_com_tentativas_pct": 95.88,
+      "epop_total": 154,
+      "epop_com_imagem": 118,
+      "taxa_poc_pct": 76.62
+    },
+    {
+      "base": "ITUP-SP",
+      "qtd_a_coletar": 17,
+      "qtd_coletada_no_prazo": 17,
+      "soma_coletados_tentativas": 17,
+      "taxa_real_pct": 100.0,
+      "taxa_com_tentativas_pct": 100.0,
+      "epop_total": 3,
+      "epop_com_imagem": 0,
+      "taxa_poc_pct": 0.0
+    },
+    {
+      "base": "JND 02-SP",
+      "qtd_a_coletar": 4053,
+      "qtd_coletada_no_prazo": 3012,
+      "soma_coletados_tentativas": 3963,
+      "taxa_real_pct": 74.32,
+      "taxa_com_tentativas_pct": 97.78,
+      "epop_total": 387,
+      "epop_com_imagem": 227,
+      "taxa_poc_pct": 58.66
+    },
+    {
+      "base": "JND-SP",
+      "qtd_a_coletar": 38,
+      "qtd_coletada_no_prazo": 38,
+      "soma_coletados_tentativas": 38,
+      "taxa_real_pct": 100.0,
+      "taxa_com_tentativas_pct": 100.0,
+      "epop_total": 40,
+      "epop_com_imagem": 19,
+      "taxa_poc_pct": 47.5
+    },
+    {
+      "base": "OSC 02-SP",
+      "qtd_a_coletar": 0,
+      "qtd_coletada_no_prazo": 0,
+      "soma_coletados_tentativas": 0,
+      "taxa_real_pct": null,
+      "taxa_com_tentativas_pct": null,
+      "epop_total": 0,
+      "epop_com_imagem": 0,
+      "taxa_poc_pct": null
+    },
+    {
+      "base": "OSC-SP",
+      "qtd_a_coletar": 6238,
+      "qtd_coletada_no_prazo": 5754,
+      "soma_coletados_tentativas": 6238,
+      "taxa_real_pct": 92.24,
+      "taxa_com_tentativas_pct": 100.0,
+      "epop_total": 262,
+      "epop_com_imagem": 157,
+      "taxa_poc_pct": 59.92
+    },
+    {
+      "base": "S-CSVD-SP",
+      "qtd_a_coletar": 10330,
+      "qtd_coletada_no_prazo": 8519,
+      "soma_coletados_tentativas": 10253,
+      "taxa_real_pct": 82.47,
+      "taxa_com_tentativas_pct": 99.25,
+      "epop_total": 719,
+      "epop_com_imagem": 479,
+      "taxa_poc_pct": 66.62
+    },
+    {
+      "base": "S-FREG-SP",
+      "qtd_a_coletar": 0,
+      "qtd_coletada_no_prazo": 0,
+      "soma_coletados_tentativas": 0,
+      "taxa_real_pct": null,
+      "taxa_com_tentativas_pct": null,
+      "epop_total": 0,
+      "epop_com_imagem": 0,
+      "taxa_poc_pct": null
+    }
   ]
 }
