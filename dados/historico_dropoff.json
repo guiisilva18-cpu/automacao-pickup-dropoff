@@ -1316,10 +1316,10 @@
     },
     {
       "base": "CHM-SP",
-      "pendente": 787,
-      "coletado": 4341,
+      "pendente": 785,
+      "coletado": 4343,
       "total": 5128,
-      "taxa_pct": 84.65
+      "taxa_pct": 84.69
     },
     {
       "base": "CLP-SP",
@@ -1386,8 +1386,8 @@
     },
     {
       "base": "S-CSVD-SP",
-      "pendente": 428,
-      "coletado": 11516,
+      "pendente": 427,
+      "coletado": 11517,
       "total": 11944,
       "taxa_pct": 96.42
     },
