@@ -158,7 +158,7 @@ def previsao_bases(linhas: list[dict], hora: str, titulo: str, rodape: str) -> l
     rows = [[r["base"], f"**{fmt_int(r['pendente'])}**" if r["pendente"] else "0"] for r in linhas]
     rows.append(["**TOTAL**", f"**{fmt_int(total)}**"])
     return cartoes_tabela(titulo, colunas, rows, rodape, topo=kpis([("Não coletado (previsão)", fmt_int(total))]),
-                          nota=f"Extração do JMS às {hora} (TikTok). O não coletado cai ao longo do dia.")
+                          nota=f"Extração do JMS às {hora} (TikTok): quantidade prevista que ainda não foi coletada.")
 
 
 def previsao_dropoff(linhas: list[dict], d1, hoje, titulo: str, rodape: str) -> list[dict]:

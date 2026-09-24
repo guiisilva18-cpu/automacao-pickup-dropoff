@@ -272,7 +272,7 @@ def _previsao_simples(rotulo_col: str, rotulo_total: str, linhas: list[tuple[str
 def img_previsao_bases(linhas: list[dict], hora: str) -> bytes:
     return _previsao_simples("Base", "NÃO COLETADO (PREVISÃO)", [(r["base"], r["pendente"]) for r in linhas],
                              sum(r["pendente"] for r in linhas),
-                             [f"Extração do JMS às {hora} (TikTok) — o não coletado cai ao longo do dia."])
+                             [f"Extração do JMS às {hora} (TikTok): quantidade prevista que ainda não foi coletada."])
 
 
 def img_previsao_dropoff(linhas: list[dict], d1, hoje) -> bytes:
