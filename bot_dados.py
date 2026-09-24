@@ -405,6 +405,9 @@ def expedicao_d1(conn, d1: date) -> dict | None:
             "media": round(pacotes / qtde, 1) if pacotes is not None and qtde else None,
         })
     linhas.sort(key=lambda x: -(x["pacotes"] if x["pacotes"] is not None else -1))
+    # Só mostra P.A com veículo ou ocupação preenchidos (Guilherme, 24/09/2026:
+    # "ocupação 0 e veículo 0, aí não mande") -- os totais abaixo seguem os do dash.
+    linhas = [r for r in linhas if (r["qtde_veiculos"] or 0) > 0 or (r["pct_ocupacao"] or 0) > 0]
 
     total_pacotes = sum(r["pacotes_expedidos"] or 0 for r in rows)
     total_veiculos = sum(r["qtde_veiculos"] or 0 for r in rows)
