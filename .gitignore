@@ -2,6 +2,7 @@
 logs/
 __pycache__/
 *.pyc
+saida_bot/
 
 # Materiais de referencia usados so pra desenhar o projeto (nao roda nada)
 DROPOFF.xlsx

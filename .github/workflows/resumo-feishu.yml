@@ -1,0 +1,62 @@
+name: RESUMO FEISHU diario
+
+on:
+  # Nao tem horario proprio: dispara quando PICKUP, DROPOFF ou TRANSFERENCIA
+  # diario terminam (a rotina das 09:00 BRT ja dispara as tres). Cada uma que
+  # termina chama este workflow; o bot espera o Pickup/Dropoff de D-1 serem
+  # gravados no banco e um lock (tabela resumo_feishu_envio) garante 1 envio
+  # por dia, entao as chamadas extras so saem sem fazer nada.
+  workflow_run:
+    workflows: ["PICKUP diario", "DROPOFF diario", "TRANSFERENCIA diario"]
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Reenviar mesmo que o resumo de hoje ja tenha sido enviado"
+        type: boolean
+        default: false
+      dry_run:
+        description: "So gerar os prints (fica nos artifacts), sem enviar nada"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: resumo-feishu
+  cancel-in-progress: false
+
+jobs:
+  resumo-feishu:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      # Fonte chinesa pros cabecalhos bilingues dos prints.
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk
+      - run: pip install -r requirements-bot.txt
+      - run: python bot_feishu.py ${{ inputs.dry_run && '--dry-run' || '' }} ${{ inputs.force && '--force' || '' }}
+        env:
+          JMS_TOKEN_INDICADORES: ${{ secrets.JMS_TOKEN_INDICADORES }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSL: ${{ secrets.DB_SSL }}
+          FEISHU_APP_ID: ${{ secrets.FEISHU_APP_ID }}
+          FEISHU_APP_SECRET: ${{ secrets.FEISHU_APP_SECRET }}
+          FEISHU_DESTINO: ${{ secrets.FEISHU_DESTINO }}
+          FEISHU_DESTINO_TIPO: ${{ secrets.FEISHU_DESTINO_TIPO }}
+          FEISHU_BASE_URL: ${{ secrets.FEISHU_BASE_URL }}
+      - uses: actions/upload-artifact@v4
+        if: inputs.dry_run
+        with:
+          name: prints-resumo
+          path: saida_bot/
