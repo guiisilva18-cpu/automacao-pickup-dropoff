@@ -24,8 +24,28 @@ class FeishuErro(RuntimeError):
     pass
 
 
-def configurado() -> bool:
+def app_configurado() -> bool:
     return all(os.environ.get(v) for v in ("FEISHU_APP_ID", "FEISHU_APP_SECRET", "FEISHU_DESTINO"))
+
+
+def webhook_configurado() -> bool:
+    return bool(os.environ.get("FEISHU_WEBHOOK_URL"))
+
+
+def modo() -> str | None:
+    """'imagem' (app: sobe PNG e manda pra pessoa/grupo) ou 'cartao' (webhook
+    do grupo: só texto e cartão, o webhook não aceita imagem). FEISHU_MODO
+    força um dos dois quando os dois estão configurados."""
+    forcado = (os.environ.get("FEISHU_MODO") or "").strip().lower()
+    if forcado == "imagem" and app_configurado():
+        return "imagem"
+    if forcado == "cartao" and webhook_configurado():
+        return "cartao"
+    if app_configurado():
+        return "imagem"
+    if webhook_configurado():
+        return "cartao"
+    return None
 
 
 def _base() -> str:
@@ -87,3 +107,51 @@ class Feishu:
 
     def enviar_imagem(self, image_key: str) -> str:
         return self._enviar("image", {"image_key": image_key})
+
+
+class Webhook:
+    """Bot customizado de grupo (webhook). Só texto e cartão -- imagem não
+    passa por aqui. Segurança por palavra-chave: TODA mensagem precisa conter
+    FEISHU_KEYWORD (o rodapé de cada cartão/texto leva a palavra). Se o bot
+    tiver "Assinatura" ligada em vez de palavra-chave, FEISHU_WEBHOOK_SECRET
+    assina a requisição."""
+
+    def __init__(self):
+        self.url = os.environ["FEISHU_WEBHOOK_URL"].strip()
+        self.palavra = (os.environ.get("FEISHU_KEYWORD") or "").strip()
+        self.segredo = (os.environ.get("FEISHU_WEBHOOK_SECRET") or "").strip()
+
+    @property
+    def rodape(self) -> str:
+        return f"Resumo automático · {self.palavra}" if self.palavra else "Resumo automático"
+
+    def _assinar(self, payload: dict) -> dict:
+        if self.segredo:
+            import base64
+            import hashlib
+            import hmac
+            import time
+
+            ts = str(int(time.time()))
+            chave = f"{ts}\n{self.segredo}".encode("utf-8")
+            payload["timestamp"] = ts
+            payload["sign"] = base64.b64encode(hmac.new(chave, digestmod=hashlib.sha256).digest()).decode("utf-8")
+        return payload
+
+    def _enviar(self, payload: dict, contexto: str):
+        resp = requests.post(self.url, json=self._assinar(payload), timeout=TIMEOUT)
+        try:
+            corpo = resp.json()
+        except ValueError:
+            raise FeishuErro(f"{contexto}: resposta não-JSON (HTTP {resp.status_code}): {resp.text[:200]}")
+        codigo = corpo.get("code", corpo.get("StatusCode", 0))
+        if resp.status_code >= 400 or codigo != 0:
+            raise FeishuErro(f"{contexto}: HTTP {resp.status_code}, code={codigo}, msg={corpo.get('msg') or corpo.get('StatusMessage')}")
+
+    def enviar_texto(self, texto: str):
+        if self.palavra and self.palavra not in texto:
+            texto = f"{texto}\n{self.rodape}"
+        self._enviar({"msg_type": "text", "content": {"text": texto}}, "texto")
+
+    def enviar_cartao(self, cartao: dict):
+        self._enviar({"msg_type": "interactive", "card": cartao}, "cartão")

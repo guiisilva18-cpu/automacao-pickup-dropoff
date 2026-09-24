@@ -33,23 +33,21 @@ VERDE_TXT = "#1B7F3B"
 VERMELHO_TXT = "#C62828"
 
 
+import bot_regras as regras  # noqa: E402
+
+_HEX = {regras.VERDE: VERDE, regras.LARANJA: LARANJA, regras.VERMELHO: VERMELHO}
+
+
 def cor_pickup(taxa: float) -> str:
-    """Pickup (coluna 'com tentativas'): >=95 verde, 90 a <95 laranja, <90 vermelho."""
-    if taxa >= 95:
-        return VERDE
-    if taxa >= 90:
-        return LARANJA
-    return VERMELHO
+    return _HEX[regras.faixa_pickup(taxa)]
 
 
 def cor_dropoff(taxa: float) -> str:
-    """Dropoff: >=95 verde, abaixo vermelho."""
-    return VERDE if taxa >= 95 else VERMELHO
+    return _HEX[regras.faixa_dropoff(taxa)]
 
 
 def cor_transferencia(taxa: float) -> str:
-    """Transferência: mesma regra 95/90 do print-modelo (95,53 verde; 93,5 laranja; 89,6 vermelho)."""
-    return cor_pickup(taxa)
+    return _HEX[regras.faixa_transferencia(taxa)]
 
 
 def _achar_fonte_cjk():
@@ -255,66 +253,42 @@ def _tabela_simples(tela: Tela, y0, colunas, linhas, cores_status=None, alt=36, 
             x += w
 
 
-def img_previsao_bases(linhas: list[dict], hora: str) -> bytes:
-    linhas = [r for r in linhas]
-    largura, topo = 1100, 130
-    alt = 36
-    tela = Tela(largura, topo + 44 + alt * (len(linhas) + 1) + 30, fundo="white")
-    tot_dev = sum(r["deveria"] for r in linhas)
-    tot_col = sum(r["coletado"] for r in linhas)
-    tot_pen = sum(r["pendente"] for r in linhas)
-    _cards(tela, 20, [("DEVERIA COLETAR", fmt_int(tot_dev), TEXTO), ("JÁ COLETADO", fmt_int(tot_col), VERDE_TXT),
-                      ("NÃO COLETADO (PREVISÃO)", fmt_int(tot_pen), VERMELHO_TXT)], margem=24)
-    cols = [("Base", 260, "l"), ("Deveria coletar", 260, "r"), ("Já coletado", 260, "r"), ("Não coletado", 260, "r")]
-    rows = [[r["base"], fmt_int(r["deveria"]), fmt_int(r["coletado"]), fmt_int(r["pendente"])] for r in linhas]
-    rows.append(["TOTAL", fmt_int(tot_dev), fmt_int(tot_col), fmt_int(tot_pen)])
-    status = [{3: VERMELHO_TXT} if r["pendente"] > 0 else None for r in linhas] + [{3: VERMELHO_TXT}]
+def _previsao_simples(rotulo_col: str, rotulo_total: str, linhas: list[tuple[str, int]], total: int, notas: list[str]) -> bytes:
+    """Print de previsão com só o NÃO COLETADO (pedido do Guilherme, 24/09/2026):
+    card do total + tabela nome x não coletado."""
+    largura, topo, alt = 900, 130, 36
+    tela = Tela(largura, topo + 44 + alt * (len(linhas) + 1) + 20 + 20 * len(notas) + 16)
+    _cards(tela, 20, [(rotulo_total, fmt_int(total), VERMELHO_TXT)], margem=24)
+    cols = [(rotulo_col, 580, "l"), ("Não coletado", 272, "r")]
+    rows = [[nome, fmt_int(v)] for nome, v in linhas] + [["TOTAL", fmt_int(total)]]
+    status = [{1: VERMELHO_TXT} if v > 0 else None for _, v in linhas] + [{1: VERMELHO_TXT}]
     _tabela_simples(tela, topo, cols, rows, status, alt=alt)
-    tela.texto(24, tela.h - 14, f"Posição às {hora} — o não coletado cai ao longo do dia.", 10, TEXTO_SUAVE, ha="left")
+    y = topo + 44 + alt * (len(linhas) + 1) + 22
+    for k, nota in enumerate(notas):
+        tela.texto(24, y + 20 * k, nota, 10, TEXTO_SUAVE, ha="left")
     return tela.png()
+
+
+def img_previsao_bases(linhas: list[dict], hora: str) -> bytes:
+    return _previsao_simples("Base", "NÃO COLETADO (PREVISÃO)", [(r["base"], r["pendente"]) for r in linhas],
+                             sum(r["pendente"] for r in linhas),
+                             [f"Extração do JMS às {hora} (TikTok) — o não coletado cai ao longo do dia."])
 
 
 def img_previsao_dropoff(linhas: list[dict], d1, hoje) -> bytes:
-    largura, topo, alt = 1100, 130, 36
-    tela = Tela(largura, topo + 44 + alt * (len(linhas) + 1) + 30, fundo="white")
-    t1 = sum(r["pendente_d1"] for r in linhas)
-    t0 = sum(r["pendente_hoje"] for r in linhas)
-    _cards(tela, 20, [(f"PENDENTE DE {d1:%d/%m}", fmt_int(t1), TEXTO),
-                      (f"PENDENTE DE {hoje:%d/%m}", fmt_int(t0), TEXTO),
-                      ("PREVISÃO DE COLETA", fmt_int(t1 + t0), VERMELHO_TXT)], margem=24)
-    cols = [("Base", 260, "l"), (f"Pendente {d1:%d/%m}", 260, "r"), (f"Pendente {hoje:%d/%m}", 260, "r"), ("Previsão", 260, "r")]
-    rows = [[r["base"], fmt_int(r["pendente_d1"]), fmt_int(r["pendente_hoje"]), fmt_int(r["previsto"])] for r in linhas]
-    rows.append(["TOTAL", fmt_int(t1), fmt_int(t0), fmt_int(t1 + t0)])
-    status = [{3: VERMELHO_TXT} if r["previsto"] > 0 else None for r in linhas] + [{3: VERMELHO_TXT}]
-    _tabela_simples(tela, topo, cols, rows, status, alt=alt)
-    return tela.png()
+    return _previsao_simples("Base", "PREVISÃO DE COLETA", [(r["base"], r["previsto"]) for r in linhas],
+                             sum(r["previsto"] for r in linhas),
+                             [f"Pedidos TikTok que já entraram no Yoyi e aguardam coleta (entrada de {d1:%d/%m} e de {hoje:%d/%m})."])
 
 
 def img_previsao_pas(dados: dict, hora: str) -> bytes:
     linhas = sorted(dados["linhas"], key=lambda r: -max(r["previsto"] - r["coletado"], 0))
-    largura, topo, alt = 1350, 130, 34
-    extra = 24 if dados["sem_movimento"] else 0
-    tela = Tela(largura, topo + 44 + alt * (len(linhas) + 1) + 40 + extra, fundo="white")
-    _cards(tela, 20, [("PREVISTO HOJE", fmt_int(dados["total_previsto"]), TEXTO),
-                      ("JÁ COLETADO", fmt_int(dados["total_coletado"]), VERDE_TXT),
-                      ("NÃO COLETADO", fmt_int(dados["total_pendente"]), VERMELHO_TXT)], margem=24)
-    cols = [("P.A", 330, "l"), ("Coletado ontem", 250, "r"), ("Previsão", 240, "r"), ("Já coletado", 240, "r"), ("Não coletado", 240, "r")]
-    rows, status = [], []
-    for r in linhas:
-        pend = max(r["previsto"] - r["coletado"], 0)
-        rows.append([r["pa"], fmt_int(r["coletado_d1"]), fmt_int(r["previsto"]), fmt_int(r["coletado"]), fmt_int(pend)])
-        status.append({4: VERMELHO_TXT if pend > 0 else VERDE_TXT})
-    rows.append(["TOTAL (líquido)", fmt_int(sum(r["coletado_d1"] for r in linhas)), fmt_int(dados["total_previsto"]),
-                 fmt_int(dados["total_coletado"]), fmt_int(dados["total_pendente"])])
-    status.append({4: VERMELHO_TXT})
-    _tabela_simples(tela, topo, cols, rows, status, alt=alt, tam=12.5)
-    y = topo + 44 + alt * (len(linhas) + 1) + 18
-    tela.texto(24, y, f"Previsão = coletado no dia anterior + 300 por P.A. Posição às {hora} (coletado ao vivo no JMS). "
-                      "Total líquido = previsto − coletado.", 10, TEXTO_SUAVE, ha="left")
+    notas = [f"Previsão = coletado ontem + 300 por P.A, sem P.As Meli. Posição às {hora} (JMS). Total líquido = previsto − coletado."]
     if dados["sem_movimento"]:
-        tela.texto(24, y + 18, "Sem movimento ontem nem hoje (fora da previsão): " + ", ".join(dados["sem_movimento"]) + ".",
-                   10, TEXTO_SUAVE, ha="left")
-    return tela.png()
+        notas.append("Sem movimento (fora da previsão): " + ", ".join(dados["sem_movimento"]) + ".")
+    return _previsao_simples("P.A", "NÃO COLETADO (PREVISÃO)",
+                             [(r["pa"], max(r["previsto"] - r["coletado"], 0)) for r in linhas],
+                             dados["total_pendente"], notas)
 
 
 def _bloco_assert(tela: Tela, y0, titulo, itens, alt=34):

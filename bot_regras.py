@@ -1,0 +1,36 @@
+"""Regras de faixa (semáforo) do resumo diário -- separadas do desenho pra
+valerem igual nas imagens (bot_imagens) e nos cartões (bot_cards).
+
+Pedido do Guilherme, 24/09/2026:
+  Pickup (coluna "com tentativas"): >=95 verde, 90 a <95 laranja, <90 vermelho.
+  Dropoff: >=95 verde, abaixo vermelho.
+  Transferência: mesma regra 95/90 do Pickup (bate com o print-modelo).
+  Expedição, % de ocupação: >=100 verde, abaixo vermelho (regra do dash).
+"""
+
+VERDE, LARANJA, VERMELHO = "verde", "laranja", "vermelho"
+
+
+def faixa_pickup(taxa: float) -> str:
+    if taxa >= 95:
+        return VERDE
+    if taxa >= 90:
+        return LARANJA
+    return VERMELHO
+
+
+def faixa_dropoff(taxa: float) -> str:
+    return VERDE if taxa >= 95 else VERMELHO
+
+
+def faixa_transferencia(taxa: float) -> str:
+    return faixa_pickup(taxa)
+
+
+def faixa_ocupacao(pct: float) -> str:
+    return VERDE if pct >= 100 else VERMELHO
+
+
+def eh_meli(pa: str) -> bool:
+    """P.As Meli ficam fora da previsão (Guilherme, 24/09/2026)."""
+    return pa.upper().startswith("PA MELI")

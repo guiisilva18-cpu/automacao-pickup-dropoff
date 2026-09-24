@@ -1,29 +1,39 @@
-"""Bot do Feishu: resumo diário das operações (prints) pro Guilherme.
+"""Bot do Feishu: resumo diário das operações pro Guilherme.
 
 Roda no GitHub Actions (workflow "RESUMO FEISHU diario"), disparado quando
 PICKUP/DROPOFF/TRANSFERENCIA diario terminam; o lock no banco garante 1
 envio por dia. Modelo da mensagem (pedido do Guilherme, 24/09/2026):
 
   Bom dia! Segue resumo das operações do dia D-1.
-  Taxa de coleta Pickup do dia D-1.            [print]
-  Taxa de coleta Dropoff do dia D-1.           [print]
-  Taxa de transferência do dia D-2.            [print]
-  Ocupação dos veículos expedidos do dia D-1.  [print]
-  Previsão de coleta Pickup do dia D.          [print]
-  Previsão de coleta Dropoff do dia D.         [print]
-  Previsão de volumes geral pro dia D.         [print]
-  Assertividade da previsão do dia D-1.        [print, a partir do 2º envio]
+  Taxa de coleta Pickup do dia D-1.
+  Taxa de coleta Dropoff do dia D-1.
+  Taxa de transferência do dia D-2.
+  Ocupação dos veículos expedidos do dia D-1.
+  Previsão de coleta Pickup do dia D.           (só o não coletado das Bases)
+  Previsão de coleta Dropoff do dia D.
+  Previsão de volumes geral para coletar no dia D.  (só o não coletado dos P.As, sem Meli)
+  Assertividade da previsão do dia D-1.         (a partir do 2º envio)
 
-Uso:  python bot_feishu.py            envia (exige FEISHU_* no ambiente)
-      python bot_feishu.py --dry-run  só desenha os PNGs em saida_bot/ e mostra o plano
-      python bot_feishu.py --force    ignora o lock do dia (reenvio manual)
+Dois modos de envio (feishu_api.modo()):
+  cartao  -- webhook do grupo (FEISHU_WEBHOOK_URL + FEISHU_KEYWORD): cada bloco vira
+             cartão do Feishu com tabela e bolinhas de cor (webhook não manda imagem).
+  imagem  -- app do Feishu (FEISHU_APP_ID/SECRET/DESTINO): cada bloco vira um PNG.
+
+Uso:  python bot_feishu.py              envia
+      python bot_feishu.py --dry-run    só renderiza (PNGs + cartoes.json em saida_bot/), não envia nem grava
+      python bot_feishu.py --teste      envia marcado como TESTE, sem lock e sem gravar a previsão
+      python bot_feishu.py --blocos 1,5 envia só esses blocos (numeração da lista acima, 1-based)
+      python bot_feishu.py --force      ignora o lock do dia (reenvio manual)
 """
 import argparse
+import json
 import logging
 import sys
+import time
 from datetime import datetime, timedelta
 from pathlib import Path
 
+import bot_cards as bc
 import bot_dados as bd
 import bot_imagens as bi
 import feishu_api
@@ -31,6 +41,7 @@ import gravar_mysql
 
 log = logging.getLogger("bot_feishu")
 PASTA_SAIDA = Path(__file__).parent / "saida_bot"
+PAUSA_ENTRE_MENSAGENS = 0.5  # webhook aceita ~5 msg/s; sobra folga
 
 
 def _tentar(avisos: list[str], nome: str, fn):
@@ -43,7 +54,7 @@ def _tentar(avisos: list[str], nome: str, fn):
         return None
 
 
-def montar(conn, hoje, sem_espera: bool = False, sincronizar: bool = True):
+def coletar(conn, hoje, sem_espera: bool = False, sincronizar: bool = True) -> dict:
     d1, d2 = hoje - timedelta(days=1), hoje - timedelta(days=2)
     avisos: list[str] = []
 
@@ -52,110 +63,197 @@ def montar(conn, hoje, sem_espera: bool = False, sincronizar: bool = True):
     if not sem_espera:
         avisos += bd.aguardar_fechamento(conn, d1)
 
-    dados_pickup = _tentar(avisos, "Pickup D-1", lambda: bd.pickup_d1(conn, d1))
-    dados_dropoff = _tentar(avisos, "Dropoff D-1", lambda: bd.dropoff_d1(conn, d1))
-    dados_transf = _tentar(avisos, "Transferência", lambda: bd.transferencia(d2, d1))
-    dados_exped = _tentar(avisos, "Expedição D-1", lambda: bd.expedicao_d1(conn, d1))
     snapshot = _tentar(avisos, "Posição ao vivo (JMS)", lambda: bd.snapshot_pickup_ao_vivo(hoje))
     hora = datetime.now(bd.FUSO).strftime("%H:%M")
     pend_dropoff = _tentar(avisos, "Dropoff aguardando coleta", lambda: bd.dropoff_pendente_ao_vivo([d1, hoje]))
+    return {
+        "hoje": hoje, "d1": d1, "d2": d2, "hora": hora, "avisos": avisos,
+        "pickup": _tentar(avisos, "Pickup D-1", lambda: bd.pickup_d1(conn, d1)),
+        "dropoff": _tentar(avisos, "Dropoff D-1", lambda: bd.dropoff_d1(conn, d1)),
+        "transf": _tentar(avisos, "Transferência", lambda: bd.transferencia(d2, d1)),
+        "exped": _tentar(avisos, "Expedição D-1", lambda: bd.expedicao_d1(conn, d1)),
+        "prev_bases": bd.previsao_bases(snapshot[0]) if snapshot else None,
+        "prev_pas": _tentar(avisos, "Previsão P.As", lambda: bd.previsao_pas(conn, d1, snapshot[1] if snapshot else {})),
+        "prev_drop": bd.previsao_dropoff(pend_dropoff, d1, hoje) if pend_dropoff else None,
+        "assert": _tentar(avisos, "Assertividade", lambda: bd.assertividade(conn, d1)),
+    }
 
-    prev_bases = bd.previsao_bases(snapshot[0]) if snapshot else None
-    prev_pas = _tentar(avisos, "Previsão P.As", lambda: bd.previsao_pas(conn, d1, snapshot[1] if snapshot else {}))
-    prev_drop = bd.previsao_dropoff(pend_dropoff, d1, hoje) if pend_dropoff else None
-    assert_ = _tentar(avisos, "Assertividade", lambda: bd.assertividade(conn, d1))
 
+def legendas(D: dict) -> dict:
     fmt = "%d/%m/%Y"
-    blocos = []  # (legenda, [png], nota_se_vazio)
-    blocos.append((f"Taxa de coleta Pickup do dia {d1:{fmt}}.",
-                   [bi.img_pickup(dados_pickup)] if dados_pickup else [], "sem dados"))
-    blocos.append((f"Taxa de coleta Dropoff do dia {d1:{fmt}}.",
-                   [bi.img_dropoff(dados_dropoff)] if dados_dropoff else [], "sem dados"))
-    blocos.append((f"Taxa de transferência do dia {d2:{fmt}}.",
-                   [bi.img_transferencia(dados_transf)] if dados_transf else [], "sem dados"))
-    blocos.append((f"Ocupação dos veículos expedidos do dia {d1:{fmt}}.",
-                   [bi.img_expedicao(dados_exped, d1)] if dados_exped else [], "sem dados de expedição"))
-    bases_img = [r for r in prev_bases if r["deveria"] > 0] if prev_bases else []
-    blocos.append((f"Previsão de coleta Pickup do dia {hoje:{fmt}}.",
-                   [bi.img_previsao_bases(bases_img, hora)] if bases_img else [], "sem dados"))
-    drop_img = [r for r in prev_drop if r["previsto"] > 0] if prev_drop else []
-    blocos.append((f"Previsão de coleta Dropoff do dia {hoje:{fmt}}.",
-                   [bi.img_previsao_dropoff(drop_img, d1, hoje)] if drop_img else [],
-                   "nenhum pedido aguardando coleta" if prev_drop is not None else "sem dados"))
-    blocos.append((f"Previsão de volumes geral para coletar no dia {hoje:{fmt}}.",
-                   [bi.img_previsao_pas(prev_pas, hora)] if prev_pas and prev_pas["linhas"] else [], "sem dados"))
-    if assert_:
-        blocos.append((f"Assertividade da previsão do dia {d1:{fmt}}.", bi.img_assertividade(assert_, d1), ""))
-
-    saudacao = f"Bom dia!\nSegue resumo das operações do dia {d1:{fmt}}."
-    return saudacao, blocos, avisos, (prev_bases, prev_pas)
+    return {
+        "pickup": f"Taxa de coleta Pickup do dia {D['d1']:{fmt}}",
+        "dropoff": f"Taxa de coleta Dropoff do dia {D['d1']:{fmt}}",
+        "transf": f"Taxa de transferência do dia {D['d2']:{fmt}}",
+        "exped": f"Ocupação dos veículos expedidos do dia {D['d1']:{fmt}}",
+        "prev_bases": f"Previsão de coleta Pickup do dia {D['hoje']:{fmt}}",
+        "prev_drop": f"Previsão de coleta Dropoff do dia {D['hoje']:{fmt}}",
+        "prev_pas": f"Previsão de volumes geral para coletar no dia {D['hoje']:{fmt}}",
+        "assert": f"Assertividade da previsão do dia {D['d1']:{fmt}}",
+    }
 
 
-def enviar(saudacao, blocos, avisos):
+def _bases_com_volume(D):
+    return [r for r in D["prev_bases"] if r["deveria"] > 0] if D["prev_bases"] else []
+
+
+def _dropoff_com_previsao(D):
+    return [r for r in D["prev_drop"] if r["previsto"] > 0] if D["prev_drop"] else []
+
+
+def blocos_imagens(D: dict) -> list:
+    """[(legenda, [png...], nota_se_vazio)]"""
+    L, bi_ = legendas(D), bi
+    bases, drop = _bases_com_volume(D), _dropoff_com_previsao(D)
+    pas = D["prev_pas"]
+    blocos = [
+        (L["pickup"], [bi_.img_pickup(D["pickup"])] if D["pickup"] else [], "sem dados"),
+        (L["dropoff"], [bi_.img_dropoff(D["dropoff"])] if D["dropoff"] else [], "sem dados"),
+        (L["transf"], [bi_.img_transferencia(D["transf"])] if D["transf"] else [], "sem dados"),
+        (L["exped"], [bi_.img_expedicao(D["exped"], D["d1"])] if D["exped"] else [], "sem dados de expedição"),
+        (L["prev_bases"], [bi_.img_previsao_bases(bases, D["hora"])] if bases else [], "sem dados"),
+        (L["prev_drop"], [bi_.img_previsao_dropoff(drop, D["d1"], D["hoje"])] if drop else [],
+         "nenhum pedido aguardando coleta" if D["prev_drop"] is not None else "sem dados"),
+        (L["prev_pas"], [bi_.img_previsao_pas(pas, D["hora"])] if pas and pas["linhas"] else [], "sem dados"),
+    ]
+    if D["assert"]:
+        blocos.append((L["assert"], bi_.img_assertividade(D["assert"], D["d1"]), ""))
+    return blocos
+
+
+def blocos_cartoes(D: dict, rodape: str) -> list:
+    """[(legenda, [cartao...], nota_se_vazio)]"""
+    L = legendas(D)
+    bases, drop = _bases_com_volume(D), _dropoff_com_previsao(D)
+    pas = D["prev_pas"]
+    blocos = [
+        (L["pickup"], bc.pickup(D["pickup"], L["pickup"], rodape) if D["pickup"] else [], "sem dados"),
+        (L["dropoff"], bc.dropoff(D["dropoff"], L["dropoff"], rodape) if D["dropoff"] else [], "sem dados"),
+        (L["transf"], bc.transferencia(D["transf"], L["transf"], rodape) if D["transf"] else [], "sem dados"),
+        (L["exped"], bc.expedicao(D["exped"], L["exped"], rodape) if D["exped"] else [], "sem dados de expedição"),
+        (L["prev_bases"], bc.previsao_bases(bases, D["hora"], L["prev_bases"], rodape) if bases else [], "sem dados"),
+        (L["prev_drop"], bc.previsao_dropoff(drop, D["d1"], D["hoje"], L["prev_drop"], rodape) if drop else [],
+         "nenhum pedido aguardando coleta" if D["prev_drop"] is not None else "sem dados"),
+        (L["prev_pas"], bc.previsao_pas(pas, D["hora"], L["prev_pas"], rodape) if pas and pas["linhas"] else [], "sem dados"),
+    ]
+    if D["assert"]:
+        blocos.append((L["assert"], bc.assertividade(D["assert"], D["d1"], rodape), ""))
+    return blocos
+
+
+def saudacao(D: dict, teste: bool) -> str:
+    dia = f"{D['d1']:%d/%m/%Y}"
+    if teste:
+        return f"TESTE do bot de resumo (pode ignorar).\nResumo das operações do dia {dia}."
+    return f"Bom dia!\nSegue resumo das operações do dia {dia}."
+
+
+def _filtrar(blocos: list, selecionados: set[int] | None) -> list:
+    if not selecionados:
+        return blocos
+    return [b for i, b in enumerate(blocos, start=1) if i in selecionados]
+
+
+def enviar_imagens(texto: str, blocos: list, avisos: list[str]):
     fs = feishu_api.Feishu()
-    fs.enviar_texto(saudacao)
+    if texto:
+        fs.enviar_texto(texto)
     for legenda, imagens, nota in blocos:
         if imagens:
-            fs.enviar_texto(legenda)
+            fs.enviar_texto(f"{legenda}.")
             for i, png in enumerate(imagens, start=1):
                 fs.enviar_imagem(fs.subir_imagem(png, f"resumo_{i}.png"))
         else:
-            fs.enviar_texto(f"{legenda} ({nota})")
+            fs.enviar_texto(f"{legenda} ({nota}).")
     if avisos:
         fs.enviar_texto("Avisos do dia:\n" + "\n".join(f"- {a}" for a in avisos))
 
 
-def salvar_dry_run(saudacao, blocos, avisos):
+def enviar_cartoes(wh: "feishu_api.Webhook", texto: str, blocos: list, avisos: list[str]):
+    if texto:
+        wh.enviar_texto(texto)
+    for legenda, cartoes, nota in blocos:
+        if cartoes:
+            for c in cartoes:
+                time.sleep(PAUSA_ENTRE_MENSAGENS)
+                wh.enviar_cartao(c)
+        else:
+            time.sleep(PAUSA_ENTRE_MENSAGENS)
+            wh.enviar_texto(f"{legenda} ({nota}).")
+    if avisos:
+        wh.enviar_texto("Avisos do dia:\n" + "\n".join(f"- {a}" for a in avisos))
+
+
+def salvar_dry_run(D: dict):
     PASTA_SAIDA.mkdir(exist_ok=True)
-    print(saudacao)
+    print(saudacao(D, teste=False))
     n = 0
-    for legenda, imagens, nota in blocos:
+    for legenda, imagens, nota in blocos_imagens(D):
         print(f"\n{legenda}" + ("" if imagens else f"  ({nota})"))
         for png in imagens:
             n += 1
-            caminho = PASTA_SAIDA / f"{n:02d}.png"
-            caminho.write_bytes(png)
-            print(f"   -> {caminho.name} ({len(png) // 1024} KB)")
-    if avisos:
+            (PASTA_SAIDA / f"{n:02d}.png").write_bytes(png)
+            print(f"   imagem {n:02d}.png ({len(png) // 1024} KB)")
+    todos = []
+    print("\n--- cartões (modo webhook) ---")
+    for legenda, cartoes, nota in blocos_cartoes(D, "Resumo automático"):
+        for c in cartoes:
+            tam = len(json.dumps(c, ensure_ascii=False).encode("utf-8"))
+            print(f"   {c['header']['title']['content']}  [{tam / 1024:.1f} KB]")
+            todos.append(c)
+    (PASTA_SAIDA / "cartoes.json").write_text(json.dumps(todos, ensure_ascii=False, indent=1), encoding="utf-8")
+    if D["avisos"]:
         print("\nAvisos do dia:")
-        for a in avisos:
+        for a in D["avisos"]:
             print(" -", a)
 
 
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser()
-    ap.add_argument("--dry-run", action="store_true", help="só desenha os PNGs em saida_bot/, sem lock, sem envio, sem gravar")
+    ap.add_argument("--dry-run", action="store_true", help="só renderiza em saida_bot/, sem lock, sem envio, sem gravar")
+    ap.add_argument("--teste", action="store_true", help="envia marcado como TESTE, sem lock e sem gravar a previsão")
+    ap.add_argument("--blocos", default="", help="números dos blocos a enviar, ex.: 1,5 (padrão: todos)")
+    ap.add_argument("--sem-saudacao", action="store_true", help="não manda a mensagem de saudação (útil em testes repetidos)")
     ap.add_argument("--force", action="store_true", help="ignora o lock do dia")
     ap.add_argument("--sem-espera", action="store_true", help="não espera o Pickup/Dropoff de D-1 serem gravados")
     args = ap.parse_args(argv)
+    selecionados = {int(x) for x in args.blocos.split(",") if x.strip()} or None
 
     logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
     hoje = bd.hoje_sp()
-
-    if not args.dry_run and not feishu_api.configurado():
-        log.warning("FEISHU_APP_ID/FEISHU_APP_SECRET/FEISHU_DESTINO não configurados — nada a fazer.")
+    modo = feishu_api.modo()
+    if not args.dry_run and modo is None:
+        log.warning("Feishu não configurado (FEISHU_WEBHOOK_URL ou FEISHU_APP_ID/SECRET/DESTINO) — nada a fazer.")
         return 0
 
     conn = gravar_mysql._conectar()
     try:
         bd.garantir_tabelas(conn)
         if args.dry_run:
-            saudacao, blocos, avisos, _ = montar(conn, hoje, sem_espera=True, sincronizar=False)
-            salvar_dry_run(saudacao, blocos, avisos)
+            salvar_dry_run(coletar(conn, hoje, sem_espera=True, sincronizar=False))
             return 0
 
-        if not args.force and not bd.tentar_lock(conn, hoje):
+        real = not args.teste and not selecionados  # teste/blocos parciais não travam o dia nem gravam a previsão
+        if real and not args.force and not bd.tentar_lock(conn, hoje):
             log.info("Resumo de %s já enviado (ou em andamento) — saindo.", hoje)
             return 0
         try:
-            saudacao, blocos, avisos, (prev_bases, prev_pas) = montar(conn, hoje, sem_espera=args.sem_espera)
-            enviar(saudacao, blocos, avisos)
-            if prev_bases and prev_pas:
-                bd.gravar_previsao(conn, hoje, prev_bases, prev_pas)
-            bd.marcar_enviado(conn, hoje)
-            log.info("Resumo de %s enviado.", hoje)
+            D = coletar(conn, hoje, sem_espera=args.sem_espera or args.teste)
+            texto = None if args.sem_saudacao else saudacao(D, args.teste)
+            if modo == "cartao":
+                wh = feishu_api.Webhook()
+                enviar_cartoes(wh, texto, _filtrar(blocos_cartoes(D, wh.rodape), selecionados),
+                               [] if selecionados else D["avisos"])
+            else:
+                enviar_imagens(texto, _filtrar(blocos_imagens(D), selecionados), [] if selecionados else D["avisos"])
+            if real and D["prev_bases"] and D["prev_pas"] and not selecionados:
+                bd.gravar_previsao(conn, hoje, D["prev_bases"], D["prev_pas"])
+            if real:
+                bd.marcar_enviado(conn, hoje)
+            log.info("Resumo de %s enviado (modo %s%s).", hoje, modo, ", TESTE" if args.teste else "")
         except Exception:
-            bd.liberar_lock(conn, hoje)
+            if real:
+                bd.liberar_lock(conn, hoje)
             raise
     finally:
         conn.close()

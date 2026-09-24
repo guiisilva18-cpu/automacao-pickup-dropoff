@@ -20,6 +20,7 @@ from zoneinfo import ZoneInfo
 import requests
 from openpyxl import load_workbook
 
+import bot_regras as regras
 import expedicao as exp
 import extrair_dropoff as ed
 import extrair_pickup as ep
@@ -400,11 +401,14 @@ def coletados_d1_por_pa(conn, d1: date) -> dict[str, int]:
 
 def previsao_pas(conn, d1: date, coletado_ao_vivo: dict[str, int]) -> dict:
     """previsto = coletados de D-1 (fechamento, resumo_pa) + INCREMENTO_PA; já
-    coletado = posição ao vivo no JMS. P.A sem movimento ontem nem hoje fica
-    fora (não faz sentido prever 300 pra quem está parado)."""
+    coletado = posição ao vivo no JMS. Ficam de fora os P.As Meli (pedido do
+    Guilherme, 24/09/2026) e os P.As sem movimento ontem nem hoje (não faz
+    sentido prever 300 pra quem está parado)."""
     col_d1 = coletados_d1_por_pa(conn, d1)
     linhas, sem_movimento = [], []
     for pa in sorted(PAS_ATIVAS):
+        if regras.eh_meli(pa):
+            continue
         anterior = col_d1.get(pa, 0)
         vivo = coletado_ao_vivo.get(pa, 0)
         if anterior == 0 and vivo == 0:
