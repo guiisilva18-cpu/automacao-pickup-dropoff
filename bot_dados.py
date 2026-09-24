@@ -116,26 +116,63 @@ def marcar_enviado(conn, dia: date):
         )
 
 
-def aguardar_fechamento(conn, d1: date, limite_min: int = 15) -> list[str]:
-    """Espera o Pickup e o Dropoff de D-1 terem sido gravados hoje pelas
-    automações (o bot é disparado pela 1ª que termina). Passado o limite,
-    segue com o que existir -- um bloco ausente vira aviso, não trava o dia."""
+def aguardar_resumo_pa(conn, d1: date, limite_min: int = 20) -> list[str]:
+    """resumo_pa de D-1 (fechamento por P.A) é base da previsão e da
+    assertividade dos P.As; vem da carga diária do JMS (~06:00 BRT)."""
     fim = time.time() + limite_min * 60
     while True:
-        prontos = {}
-        for tabela in ("pickup_diario", "dropoff_diario"):
-            n = _linhas(
-                conn,
-                f"SELECT COUNT(*) AS n FROM {tabela} WHERE data_referencia = %s AND data_carga >= NOW() - INTERVAL 8 HOUR",
-                (d1,),
-            )[0]["n"]
-            prontos[tabela] = n > 0
-        if all(prontos.values()):
+        n = _linhas(conn, "SELECT COUNT(*) AS n FROM resumo_pa WHERE data_referencia = %s", (d1,))[0]["n"]
+        if n > 0:
             return []
         if time.time() >= fim:
-            faltando = [t.replace("_diario", "").capitalize() for t, ok in prontos.items() if not ok]
-            return [f"{', '.join(faltando)} de {d1:%d/%m} ainda não gravado(s) — bloco(s) com dados possivelmente desatualizados."]
-        time.sleep(30)
+            return [f"Fechamento dos P.As de {d1:%d/%m} (resumo_pa) ainda não carregou — previsão dos P.As pode estar vazia."]
+        time.sleep(60)
+
+
+def obter_pickup_dropoff_d1(conn, d1: date, d2: date, limite_min: int = 50, passo_s: int = 300):
+    """Pickup e Dropoff de D-1 ao vivo no JMS, sem esperar a carga das 09:00.
+    O relatório de Indicadores de Negócios (bigdataReport) só fecha D-1 por
+    volta das 09:00 BRT (rodando às 05h/06h devolve tudo zerado -- achado de
+    03/09/2026), então o Pickup só é aceito quando o total de D-1 chega a pelo
+    menos 50% do de D-2 (referência no banco); antes disso espera `passo_s` e
+    consulta de novo, até `limite_min`. Vencido o prazo, cai no que a carga
+    das 09:00 já gravou no banco e, se ainda estiver vazio, segue com aviso.
+    Devolve (pickup, dropoff, avisos)."""
+    avisos = []
+    ref = int(_linhas(conn, "SELECT COALESCE(SUM(qtd_a_coletar), 0) AS t FROM pickup_diario WHERE data_referencia = %s", (d2,))[0]["t"])
+    minimo = ref * 0.5
+    fim = time.time() + limite_min * 60
+
+    pickup, fechado = None, False
+    while True:
+        try:
+            pickup = pickup_d1_ao_vivo(d1)
+        except Exception:
+            log.exception("Falha ao buscar o Pickup de %s ao vivo", d1)
+            pickup = None
+        total = sum(r["qtd_a_coletar"] for r in pickup) if pickup else 0
+        fechado = pickup is not None and total > 0 and total >= minimo
+        if fechado or time.time() >= fim:
+            break
+        log.info("Pickup de %s ainda parece aberto (total %s, referência D-2 %s); nova consulta em %ss", d1, total, ref, passo_s)
+        time.sleep(passo_s)
+    if not fechado:
+        do_banco = pickup_d1(conn, d1)
+        if do_banco and sum(r["qtd_a_coletar"] for r in do_banco) >= minimo:
+            pickup = do_banco
+        else:
+            avisos.append(f"Pickup de {d1:%d/%m} ainda não fechou no JMS — números podem estar incompletos.")
+
+    dropoff = None
+    try:
+        dropoff = dropoff_d1_ao_vivo(d1)
+    except Exception:
+        log.exception("Falha ao buscar o Dropoff de %s ao vivo", d1)
+    if not dropoff:
+        dropoff = dropoff_d1(conn, d1)
+        if not dropoff:
+            avisos.append(f"Dropoff de {d1:%d/%m} ainda não fechou no JMS.")
+    return pickup, dropoff, avisos
 
 
 # ---------------------------------------------------------------- D-1: Pickup / Dropoff
@@ -171,6 +208,35 @@ def pickup_d1(conn, d1: date) -> list[dict]:
             "taxa_poc": _f(r["taxa_poc_pct"]) or 0.0,
         })
     saida.sort(key=lambda x: -x["taxa_tentativas"])
+    return saida
+
+
+def pickup_d1_ao_vivo(d1: date) -> list[dict]:
+    """Mesma extração do e-mail do Pickup (extrair_pickup.buscar_pickup)."""
+    saida = []
+    for r in ep.buscar_pickup(d1.isoformat()):
+        qtd = int(r["qtd_a_coletar"] or 0)
+        if qtd <= 0:
+            continue
+        saida.append({
+            "data": d1, "base": r["base"], "qtd_a_coletar": qtd,
+            "coletada_no_prazo": int(r["qtd_coletada_no_prazo"] or 0),
+            "soma_tentativas": int(r["soma_coletados_tentativas"] or 0),
+            "taxa_real": float(r["taxa_real_pct"] or 0), "taxa_tentativas": float(r["taxa_com_tentativas_pct"] or 0),
+            "taxa_poc": float(r["taxa_poc_pct"] or 0),
+        })
+    saida.sort(key=lambda x: -x["taxa_tentativas"])
+    return saida
+
+
+def dropoff_d1_ao_vivo(d1: date) -> list[dict]:
+    """Mesma extração do e-mail do Dropoff (extrair_dropoff.buscar_dropoff)."""
+    saida = [
+        {"data": d1, "base": r["base"], "pendente": int(r["pendente"] or 0), "coletado": int(r["coletado"] or 0),
+         "total": int(r["total"] or 0), "taxa": float(r["taxa_pct"] or 0)}
+        for r in ed.buscar_dropoff(d1.isoformat()) if int(r["total"] or 0) > 0
+    ]
+    saida.sort(key=lambda x: -x["taxa"])
     return saida
 
 
@@ -458,7 +524,7 @@ def gravar_previsao(conn, hoje: date, bases: list[dict], pas: dict):
         )
 
 
-def assertividade(conn, d1: date) -> dict | None:
+def assertividade(conn, d1: date, final_base: dict[str, int] | None = None) -> dict | None:
     """Compara a previsão feita em D-1 (guardada no envio daquele dia) com o
     realizado de D-1. P.A: realizado = coletados do fechamento (resumo_pa).
     Base: previsto era o pendente do Pickup no momento do envio; realizado =
@@ -473,10 +539,11 @@ def assertividade(conn, d1: date) -> dict | None:
     if not prev:
         return None
     final_pa = coletados_d1_por_pa(conn, d1)
-    final_base = {
-        r["base_remetente"]: int(r["qtd_coletada_no_prazo"] or 0)
-        for r in _linhas(conn, "SELECT base_remetente, qtd_coletada_no_prazo FROM pickup_diario WHERE data_referencia = %s", (d1,))
-    }
+    if final_base is None:
+        final_base = {
+            r["base_remetente"]: int(r["qtd_coletada_no_prazo"] or 0)
+            for r in _linhas(conn, "SELECT base_remetente, qtd_coletada_no_prazo FROM pickup_diario WHERE data_referencia = %s", (d1,))
+        }
     bases, pas = [], []
     for r in prev:
         previsto = int(r["previsto"])

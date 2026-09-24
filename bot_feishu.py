@@ -61,21 +61,30 @@ def coletar(conn, hoje, sem_espera: bool = False, sincronizar: bool = True) -> d
     if sincronizar:
         _tentar(avisos, "Expedição (planilha)", lambda: bd.sincronizar_expedicao(conn))
     if not sem_espera:
-        avisos += bd.aguardar_fechamento(conn, d1)
+        avisos += bd.aguardar_resumo_pa(conn, d1)
+
+    # Pickup/Dropoff de D-1 ao vivo (o envio é às 08:30, antes da carga das 09:00);
+    # em teste/simulação não espera o fechamento, só consulta uma vez.
+    pk_dp = _tentar(avisos, "Pickup/Dropoff D-1",
+                    lambda: bd.obter_pickup_dropoff_d1(conn, d1, d2, limite_min=0 if sem_espera else 50))
+    pickup, dropoff = (pk_dp[0], pk_dp[1]) if pk_dp else (None, None)
+    if pk_dp:
+        avisos += pk_dp[2]
 
     snapshot = _tentar(avisos, "Posição ao vivo (JMS)", lambda: bd.snapshot_pickup_ao_vivo(hoje))
     hora = datetime.now(bd.FUSO).strftime("%H:%M")
     pend_dropoff = _tentar(avisos, "Dropoff aguardando coleta", lambda: bd.dropoff_pendente_ao_vivo([d1, hoje]))
+    final_base = {r["base"]: r["coletada_no_prazo"] for r in pickup} if pickup else None
     return {
         "hoje": hoje, "d1": d1, "d2": d2, "hora": hora, "avisos": avisos,
-        "pickup": _tentar(avisos, "Pickup D-1", lambda: bd.pickup_d1(conn, d1)),
-        "dropoff": _tentar(avisos, "Dropoff D-1", lambda: bd.dropoff_d1(conn, d1)),
+        "pickup": pickup,
+        "dropoff": dropoff,
         "transf": _tentar(avisos, "Transferência", lambda: bd.transferencia(d2, d1)),
         "exped": _tentar(avisos, "Expedição D-1", lambda: bd.expedicao_d1(conn, d1)),
         "prev_bases": bd.previsao_bases(snapshot[0]) if snapshot else None,
         "prev_pas": _tentar(avisos, "Previsão P.As", lambda: bd.previsao_pas(conn, d1, snapshot[1] if snapshot else {})),
         "prev_drop": bd.previsao_dropoff(pend_dropoff, d1, hoje) if pend_dropoff else None,
-        "assert": _tentar(avisos, "Assertividade", lambda: bd.assertividade(conn, d1)),
+        "assert": _tentar(avisos, "Assertividade", lambda: bd.assertividade(conn, d1, final_base)),
     }
 
 
