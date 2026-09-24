@@ -171,12 +171,12 @@ def previsao_dropoff(linhas: list[dict], d1, hoje, titulo: str, rodape: str) -> 
 
 
 def previsao_pas(dados: dict, hora: str, titulo: str, rodape: str) -> list[dict]:
-    linhas = sorted(dados["linhas"], key=lambda r: -max(r["previsto"] - r["coletado"], 0))
+    itens = [(r["pa"], max(r["previsto"] - r["coletado"], 0)) for r in dados["linhas"]]
+    itens = sorted((i for i in itens if i[1] > 0), key=lambda x: -x[1])
+    if not itens:
+        return []
     colunas = [("P.A", 3, "left"), ("Não coletado", 2, "right")]
-    rows = []
-    for r in linhas:
-        pend = max(r["previsto"] - r["coletado"], 0)
-        rows.append([r["pa"], f"**{fmt_int(pend)}**" if pend else "0"])
+    rows = [[pa, f"**{fmt_int(pend)}**"] for pa, pend in itens]
     rows.append(["**TOTAL (líquido)**", f"**{fmt_int(dados['total_pendente'])}**"])
     nota = f"Previsão = coletado ontem + 300 por P.A, sem P.As Meli. Posição às {hora} (JMS)."
     if dados["sem_movimento"]:
@@ -201,113 +201,3 @@ def assertividade(dados: dict, d1, rodape: str) -> list[dict]:
                                 topo=kpis([("Passaram da previsão", f"{passaram} de {len(itens)}")]),
                                 nota="Passou = realizado igual ou acima do previsto.")
     return saida
-
-
-# ---------------------------------------------------------------- previsão: tudo numa mensagem só
-def _barra(pct: float, largura: int = 8) -> str:
-    cheios = int(round(min(max(pct, 0.0), 100.0) / 100 * largura))
-    return "█" * cheios + "░" * (largura - cheios)
-
-
-def _pct1(v: float) -> str:
-    return f"{v:.1f}".replace(".", ",") + "%"
-
-
-def _linhas_barras(itens: list[tuple[str, int, float]], larg_nome: int) -> str:
-    """[(nome, valor, pct)] -> 1 trecho monoespaçado por linha (alinha nome, número e barra)."""
-    return "\n".join(
-        f"`{n[:larg_nome]:<{larg_nome}} {fmt_int(v):>7}  {_barra(p)} {p:>3.0f}%`" for n, v, p in itens
-    )
-
-
-def _secao_titulo(texto: str, sub: str | None = None) -> list[dict]:
-    el = [_md(f"**{texto}**")]
-    if sub:
-        el.append(_md(f"<font color='grey'>{sub}</font>"))
-    return el
-
-
-def _secao_pickup(D: dict) -> list[dict]:
-    bases = [r for r in (D["prev_bases"] or []) if r["deveria"] > 0]
-    if not bases:
-        return []
-    dev, pen = sum(r["deveria"] for r in bases), sum(r["pendente"] for r in bases)
-    visiveis = sorted((r for r in bases if r["pendente"] > 0), key=lambda x: -x["pendente"])
-    if not visiveis:
-        return []
-    el = _secao_titulo(f"Previsão de coleta Pickup do dia {D['hoje']:%d/%m/%Y}",
-                       f"Extração do JMS às {D['hora']} (TikTok) · barra = % do previsto que ainda não foi coletado")
-    el.append(kpis([("Não coletado", fmt_int(pen)), ("Previsto", fmt_int(dev)),
-                    ("% não coletado", _pct1(pen / dev * 100 if dev else 0))]))
-    el.append(_md(_linhas_barras([(r["base"], r["pendente"], r["pendente"] / r["deveria"] * 100) for r in visiveis], 11)))
-    return el
-
-
-def _secao_dropoff(D: dict) -> list[dict]:
-    drop = sorted((r for r in (D["prev_drop"] or []) if r["previsto"] > 0), key=lambda x: -x["previsto"])
-    if not drop:
-        return []
-    total = sum(r["previsto"] for r in drop)
-    el = _secao_titulo(f"Previsão de coleta Dropoff do dia {D['hoje']:%d/%m/%Y}",
-                       f"Pedidos TikTok no Yoyi aguardando coleta (entrada de {D['d1']:%d/%m} e {D['hoje']:%d/%m}) · barra = % do total")
-    el.append(kpis([("Previsão de coleta", fmt_int(total))]))
-    el.append(_md(_linhas_barras([(r["base"], r["previsto"], r["previsto"] / total * 100) for r in drop], 11)))
-    return el
-
-
-def _secao_pas(D: dict) -> list[dict]:
-    pas = D["prev_pas"]
-    if not pas or not pas["linhas"]:
-        return []
-    itens = []
-    for r in sorted(pas["linhas"], key=lambda x: -max(x["previsto"] - x["coletado"], 0)):
-        pend = max(r["previsto"] - r["coletado"], 0)
-        if pend > 0:
-            itens.append((r["pa"].replace("PA ", "", 1), pend, pend / r["previsto"] * 100))
-    if not itens:
-        return []
-    el = _secao_titulo(f"Previsão de volumes geral para coletar no dia {D['hoje']:%d/%m/%Y}",
-                       "P.As sem Meli · previsão = coletado ontem + 300 · barra = % do previsto que ainda não foi coletado")
-    el.append(kpis([("Não coletado", fmt_int(pas["total_pendente"])), ("Previsto", fmt_int(pas["total_previsto"])),
-                    ("% não coletado", _pct1(pas["total_pendente"] / pas["total_previsto"] * 100 if pas["total_previsto"] else 0))]))
-    el.append(_md(_linhas_barras(itens, 16)))
-    return el
-
-
-def _secao_assertividade(D: dict) -> list[dict]:
-    ass = D.get("assert")
-    if not ass:
-        return []
-    el = _secao_titulo(f"Assertividade da previsão do dia {D['d1']:%d/%m/%Y}",
-                       "Passou = realizado igual ou acima do previsto · % = realizado / previsto")
-    algum = False
-    for rotulo, chave, larg in (("Bases", "bases", 11), ("P.As", "pas", 16)):
-        itens = ass[chave]
-        if not itens:
-            continue
-        algum = True
-        passaram = sum(1 for r in itens if r["passou"])
-        el.append(_md(f"**{rotulo}: {passaram} de {len(itens)} passaram da previsão**"))
-        linhas = []
-        for r in itens:
-            nome = r["nome"].replace("PA ", "", 1)[:larg]
-            linhas.append(f"{BOLA[regras.VERDE if r['passou'] else regras.VERMELHO]} "
-                          f"`{nome:<{larg}} {fmt_int(r['previsto']):>7} → {fmt_int(r['realizado']):>7} {r['pct']:>4.0f}%`")
-        el.append(_md("\n".join(linhas)))
-    return el if algum else []
-
-
-def previsao_unica(D: dict, rodape: str) -> dict | None:
-    """Pedido do Guilherme (24/09/2026): previsão numa mensagem só, com gráfico
-    de barras e percentual; linha zerada não vai e seção sem nada some (None se
-    não sobrar seção alguma). Webhook não aceita imagem, então a barra é feita
-    com blocos de texto (█/░) dentro do cartão."""
-    secoes = [s for s in (_secao_pickup(D), _secao_dropoff(D), _secao_pas(D), _secao_assertividade(D)) if s]
-    if not secoes:
-        return None
-    el: list[dict] = []
-    for i, secao in enumerate(secoes):
-        if i:
-            el.append({"tag": "hr"})
-        el += secao
-    return cartao(f"Previsão de coleta do dia {D['hoje']:%d/%m/%Y}", el, rodape)

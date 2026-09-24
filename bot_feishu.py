@@ -13,7 +13,6 @@ envio por dia. Modelo da mensagem (pedido do Guilherme, 24/09/2026):
   Previsão de coleta Dropoff do dia D.
   Previsão de volumes geral para coletar no dia D.  (só o não coletado dos P.As, sem Meli)
   Assertividade da previsão do dia D-1.         (a partir do 2º envio)
-  No modo cartão as 4 últimas linhas vão numa mensagem só, com barras de percentual.
 
 Dois modos de envio (feishu_api.modo()):
   cartao  -- webhook do grupo (FEISHU_WEBHOOK_URL + FEISHU_KEYWORD): cada bloco vira
@@ -23,7 +22,7 @@ Dois modos de envio (feishu_api.modo()):
 Uso:  python bot_feishu.py              envia
       python bot_feishu.py --dry-run    só renderiza (PNGs + cartoes.json em saida_bot/), não envia nem grava
       python bot_feishu.py --teste      envia marcado como TESTE, sem lock e sem gravar a previsão
-      python bot_feishu.py --blocos 1,5 envia só esses blocos (modo cartão: 1 a 4 = resultados de D-1, 5 = previsão)
+      python bot_feishu.py --blocos 1,5 envia só esses blocos (numeração da lista acima, 1-based)
       python bot_feishu.py --force      ignora o lock do dia (reenvio manual)
 """
 import argparse
@@ -132,17 +131,22 @@ def blocos_imagens(D: dict) -> list:
 
 
 def blocos_cartoes(D: dict, rodape: str) -> list:
-    """[(legenda, [cartao...], nota_se_vazio)] -- resultados de D-1 em 4 blocos e
-    a previsão inteira (Pickup, Dropoff, P.As + assertividade) numa mensagem só."""
+    """[(legenda, [cartao...], nota_se_vazio)]"""
     L = legendas(D)
+    bases, drop = _bases_com_volume(D), _dropoff_com_previsao(D)
+    pas = D["prev_pas"]
     blocos = [
         (L["pickup"], bc.pickup(D["pickup"], L["pickup"], rodape) if D["pickup"] else [], "sem dados"),
         (L["dropoff"], bc.dropoff(D["dropoff"], L["dropoff"], rodape) if D["dropoff"] else [], "sem dados"),
         (L["transf"], bc.transferencia(D["transf"], L["transf"], rodape) if D["transf"] else [], "sem dados"),
         (L["exped"], bc.expedicao(D["exped"], L["exped"], rodape) if D["exped"] else [], "sem dados de expedição"),
+        (L["prev_bases"], bc.previsao_bases(bases, D["hora"], L["prev_bases"], rodape) if bases else [], "sem dados"),
+        (L["prev_drop"], bc.previsao_dropoff(drop, D["d1"], D["hoje"], L["prev_drop"], rodape) if drop else [],
+         "nenhum pedido aguardando coleta"),
+        (L["prev_pas"], bc.previsao_pas(pas, D["hora"], L["prev_pas"], rodape) if pas and pas["linhas"] else [], "sem dados"),
     ]
-    unico = bc.previsao_unica(D, rodape)
-    blocos.append((f"Previsão de coleta do dia {D['hoje']:%d/%m/%Y}", [unico] if unico else [], "sem dados"))
+    if D["assert"]:
+        blocos.append((L["assert"], bc.assertividade(D["assert"], D["d1"], rodape), ""))
     return blocos
 
 

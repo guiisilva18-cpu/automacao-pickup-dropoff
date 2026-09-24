@@ -287,7 +287,8 @@ def img_previsao_pas(dados: dict, hora: str) -> bytes:
     if dados["sem_movimento"]:
         notas.append("Sem movimento (fora da previsão): " + ", ".join(dados["sem_movimento"]) + ".")
     return _previsao_simples("P.A", "NÃO COLETADO (PREVISÃO)",
-                             [(r["pa"], max(r["previsto"] - r["coletado"], 0)) for r in linhas],
+                             [(r["pa"], max(r["previsto"] - r["coletado"], 0)) for r in linhas
+                              if r["previsto"] - r["coletado"] > 0],
                              dados["total_pendente"], notas)
 
 
