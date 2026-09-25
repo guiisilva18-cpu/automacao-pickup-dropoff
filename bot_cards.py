@@ -111,7 +111,7 @@ def pickup(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
              str(r["coletada_no_prazo"]), str(r["soma_tentativas"]), fmt_pct(r["taxa_real"]),
              f"**{fmt_pct(r['taxa_tentativas'])}**", fmt_pct(r["taxa_poc"])] for r in linhas]
     return cartoes_tabela(titulo, colunas, rows, rodape,
-                          nota="🟢 95% ou mais · 🟠 90% a 94,99% · 🔴 abaixo de 90% (coluna Com tentativas)")
+                          nota="🟢 98,99% ou mais · 🟠 95% a 98,98% · 🔴 abaixo de 95% (coluna Com tentativas)")
 
 
 def dropoff(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
@@ -119,7 +119,7 @@ def dropoff(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
                ("Total 已扫描", 2, "right"), ("Taxa 取件率", 2, "right")]
     rows = [[_com_bola(regras.faixa_dropoff(r["taxa"]), r["base"]), str(r["pendente"]), str(r["coletado"]),
              str(r["total"]), f"**{fmt_pct(r['taxa'])}**"] for r in linhas]
-    return cartoes_tabela(titulo, colunas, rows, rodape, nota="🟢 95% ou mais · 🔴 abaixo de 95%")
+    return cartoes_tabela(titulo, colunas, rows, rodape, nota="🟢 95% ou mais · 🟠 90% a 94,99% · 🔴 abaixo de 90%")
 
 
 def transferencia(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
