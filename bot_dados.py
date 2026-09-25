@@ -359,6 +359,29 @@ def sincronizar_expedicao(conn) -> bool:
     if not linhas:
         log.warning("Planilha de Expedição sem abas no formato DD.MM; nada sincronizado")
         return False
+
+    # Às vezes 2 líderes preenchem o mesmo PA no mesmo dia em linhas
+    # separadas (ex: um só com pacotes, outro só com veículo) -- sem
+    # agregar, o ON DUPLICATE KEY UPDATE abaixo faz a última linha apagar
+    # os pacotes/veículos da primeira (achado em auditoria de 25/09/2026,
+    # sumia 81 mil pacotes e 7 carretas do PA MELI-CJM-SP em 24/09).
+    agrupado: dict[tuple, dict] = {}
+    for data_aba, pa, lider, pacotes, perfil, qtde in linhas:
+        acc = agrupado.setdefault((data_aba, pa), {"lideres": [], "pacotes": None, "perfis": [], "qtde": None})
+        if lider and lider not in acc["lideres"]:
+            acc["lideres"].append(lider)
+        if pacotes is not None:
+            acc["pacotes"] = (acc["pacotes"] or 0) + pacotes
+        if perfil and perfil not in acc["perfis"]:
+            acc["perfis"].append(perfil)
+        if qtde is not None:
+            acc["qtde"] = (acc["qtde"] or 0) + qtde
+    linhas = [
+        (data_aba, pa, " / ".join(acc["lideres"]) or None, acc["pacotes"],
+         " E ".join(acc["perfis"]) or None, acc["qtde"])
+        for (data_aba, pa), acc in agrupado.items()
+    ]
+
     with conn.cursor() as cur:
         cur.executemany(
             "INSERT INTO expedicao_pa (data_referencia, base_remetente, lider, pacotes_expedidos, "

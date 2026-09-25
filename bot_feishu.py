@@ -93,7 +93,11 @@ def legendas(D: dict) -> dict:
     return {
         "pickup": f"Taxa de coleta Pickup do dia {D['d1']:{fmt}}",
         "dropoff": f"Taxa de coleta Dropoff do dia {D['d1']:{fmt}}",
-        "transf": f"Taxa de transferência do dia {D['d2']:{fmt}}",
+        # Janela D-2->D-1: o JMS não fecha o mesmo intervalo pra toda base
+        # (algumas só têm dado de D-2, outras só de D-1, outras somam os
+        # dois) -- rotular como "do dia D-2" enganava (achado em auditoria
+        # de 25/09/2026). Mostra o intervalo real.
+        "transf": f"Taxa de transferência ({D['d2']:%d/%m} a {D['d1']:{fmt}})",
         "exped": f"Ocupação dos veículos expedidos do dia {D['d1']:{fmt}}",
         "prev_bases": f"Previsão de coleta Pickup do dia {D['hoje']:{fmt}}",
         "prev_drop": f"Previsão de coleta Dropoff do dia {D['hoje']:{fmt}}",
