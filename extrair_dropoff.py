@@ -91,13 +91,11 @@ ORIGEM_PEDIDO_FILTRO = "TikTok"
 ORDER_TYPE_PENDENTE = 3  # "已入库待揽收"
 ORDER_TYPE_COLETADO = 4  # "已揽收"
 
-# Mesmas 14 bases do relatório PICKUP (Guilherme, 2026-08-11).
+# Mesmas bases do relatório PICKUP (Guilherme, 2026-08-11).
+# Reduzido em 05/10/2026: saíram COT-SP, CARAP-SP, CARAP 02-SP e S-CSVD-SP.
 BASES_PICKUP = [
-    "CARAP 02-SP",
-    "CARAP-SP",
     "CHM-SP",
     "CLP-SP",
-    "COT-SP",
     "F JND-SP",
     "F S-JRG-SP",
     "ITUP-SP",
@@ -105,7 +103,6 @@ BASES_PICKUP = [
     "JND-SP",
     "OSC 02-SP",
     "OSC-SP",
-    "S-CSVD-SP",
     "S-FREG-SP",
 ]
 

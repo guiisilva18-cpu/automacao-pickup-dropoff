@@ -105,12 +105,10 @@ ORIGEM_PEDIDO_FILTRO = "TikTok"
 
 # Bases do relatório PICKUP (Guilherme, 2026-08-11) — só essas contam, o
 # resto do retorno da API (outras ~20 bases da rede) é descartado.
+# Reduzido em 05/10/2026: saíram COT-SP, CARAP-SP, CARAP 02-SP e S-CSVD-SP.
 BASES_PICKUP = [
-    "CARAP 02-SP",
-    "CARAP-SP",
     "CHM-SP",
     "CLP-SP",
-    "COT-SP",
     "F JND-SP",
     "F S-JRG-SP",
     "ITUP-SP",
@@ -118,7 +116,6 @@ BASES_PICKUP = [
     "JND-SP",
     "OSC 02-SP",
     "OSC-SP",
-    "S-CSVD-SP",
     "S-FREG-SP",
 ]
 

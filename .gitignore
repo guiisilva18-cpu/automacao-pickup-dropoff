@@ -4,6 +4,11 @@ __pycache__/
 *.pyc
 saida_bot/
 
+# Sessao autenticada do site Yoyi (cookies + token JWT) -- extrair_yoyi_
+# aguardando.py/login_yoyi.py. Nunca versionar: da acesso direto a conta.
+yoyi_storage_state.json
+downloads_yoyi/
+
 # Materiais de referencia usados so pra desenhar o projeto (nao roda nada)
 DROPOFF.xlsx
 PICKUP.png
