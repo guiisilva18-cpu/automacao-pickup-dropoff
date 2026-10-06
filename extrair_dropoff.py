@@ -101,8 +101,7 @@ BASES_PICKUP = [
     "ITUP-SP",
     "JND 02-SP",
     "JND-SP",
-    "OSC 02-SP",
-    "OSC-SP",
+    "S-CSVD-SP",
     "S-FREG-SP",
 ]
 
