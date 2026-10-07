@@ -116,10 +116,15 @@ class Webhook:
     tiver "Assinatura" ligada em vez de palavra-chave, FEISHU_WEBHOOK_SECRET
     assina a requisição."""
 
-    def __init__(self):
-        self.url = os.environ["FEISHU_WEBHOOK_URL"].strip()
-        self.palavra = (os.environ.get("FEISHU_KEYWORD") or "").strip()
-        self.segredo = (os.environ.get("FEISHU_WEBHOOK_SECRET") or "").strip()
+    def __init__(self, url: str | None = None, palavra: str | None = None, segredo: str | None = None):
+        """Sem argumentos, usa FEISHU_WEBHOOK_URL/FEISHU_KEYWORD/
+        FEISHU_WEBHOOK_SECRET (bot do resumo da manhã, comportamento
+        original). Passando os argumentos, manda pra outro webhook/grupo --
+        usado pelo bot_poc_21h.py (resumo de "tentativa fora do prazo" às
+        21h, webhook diferente do da manhã, 07/10/2026)."""
+        self.url = (url if url is not None else os.environ["FEISHU_WEBHOOK_URL"]).strip()
+        self.palavra = (palavra if palavra is not None else (os.environ.get("FEISHU_KEYWORD") or "")).strip()
+        self.segredo = (segredo if segredo is not None else (os.environ.get("FEISHU_WEBHOOK_SECRET") or "")).strip()
 
     @property
     def rodape(self) -> str:

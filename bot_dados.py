@@ -224,6 +224,11 @@ def pickup_d1_ao_vivo(d1: date) -> list[dict]:
             "soma_tentativas": int(r["soma_coletados_tentativas"] or 0),
             "taxa_real": float(r["taxa_real_pct"] or 0), "taxa_tentativas": float(r["taxa_com_tentativas_pct"] or 0),
             "taxa_poc": float(r["taxa_poc_pct"] or 0),
+            # epop_total/epop_com_imagem (07/10/2026, bot_poc_21h.py: "a
+            # quantidade de pendente também") -- só existem na extração ao
+            # vivo (ver comentário em dashboard_logic sobre pickup_diario
+            # só guardar o percentual final, não os números brutos).
+            "epop_total": int(r.get("epop_total") or 0), "epop_com_imagem": int(r.get("epop_com_imagem") or 0),
         })
     saida.sort(key=lambda x: -x["taxa_tentativas"])
     return saida

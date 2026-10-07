@@ -1,0 +1,44 @@
+name: POC 21h
+
+on:
+  # cron nativo do GitHub pode atrasar alguns minutos, aceitavel aqui (nao
+  # depende de nenhum fechamento de dia, so consulta o JMS ao vivo).
+  schedule:
+    - cron: "0 0 * * *" # 21:00 BRT
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "So mostrar o que mandaria (log), sem enviar nada"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: poc-21h
+  cancel-in-progress: false
+
+jobs:
+  poc-21h:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements-bot.txt
+      - run: python bot_poc_21h.py ${{ inputs.dry_run && '--dry-run' || '' }}
+        env:
+          JMS_TOKEN_INDICADORES: ${{ secrets.JMS_TOKEN_INDICADORES }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_NAME: ${{ secrets.DB_NAME }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+          DB_SSL: ${{ secrets.DB_SSL }}
+          FEISHU_WEBHOOK_URL_POC_21H: ${{ secrets.FEISHU_WEBHOOK_URL_POC_21H }}
+          FEISHU_KEYWORD_POC_21H: ${{ secrets.FEISHU_KEYWORD_POC_21H }}
