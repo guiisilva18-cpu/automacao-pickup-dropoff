@@ -119,12 +119,12 @@ def poc(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
     de comprovação de coleta -- bot_poc_21h.py, 07/10/2026). linhas =
     [{"base", "deveria", "taxa_poc", "pendente"}], ordenado do MELHOR pro
     PIOR (taxa_poc desc -- pedido do Guilherme, 07/10/2026: "mostrar
-    primeiro quem ta melhor... e o ultimo pior"). "pendente" = pedidos
-    EPOP sem foto de comprovação ainda (epop_total - epop_com_imagem)."""
-    colunas = [("Base 基地", 3, "left"), ("Deveria coletar", 2, "right"),
-               ("Pendente POC", 2, "right"), ("Taxa POC 签收", 2, "right")]
-    rows = [[_com_bola(regras.faixa_pickup(r["taxa_poc"]), r["base"]), str(r["deveria"]),
-             str(r["pendente"]), f"**{fmt_pct(r['taxa_poc'])}**"] for r in linhas]
+    primeiro quem ta melhor... e o ultimo pior"). Só 2 colunas de dado
+    (mesmo pedido: "mande só a quantidade de POC e a taxa") -- quantidade
+    = pedidos COM foto (epop_total - pendente)."""
+    colunas = [("Base 基地", 3, "left"), ("Quantidade de POC", 2, "right"), ("Taxa POC 签收", 2, "right")]
+    rows = [[_com_bola(regras.faixa_pickup(r["taxa_poc"]), r["base"]), str(max(0, r["deveria"] - r["pendente"])),
+             f"**{fmt_pct(r['taxa_poc'])}**"] for r in linhas]
     return cartoes_tabela(titulo, colunas, rows, rodape,
                           nota="🟢 98,99% ou mais · 🟠 95% a 98,98% · 🔴 abaixo de 95% (mesma faixa do Pickup)")
 
