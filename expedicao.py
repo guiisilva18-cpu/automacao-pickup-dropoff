@@ -20,16 +20,17 @@ import gravar_mysql
 
 load_dotenv()
 
-# Mesmas 19 PAs ativas de App Ponto de Apoio/config.PAS_ATIVAS (corte de
-# 01/08/2026, Guilherme) -- expedicao_pa ainda tem PA MELI-SMR-SP e
-# PA PEGAKI-VCP-SP no histórico bruto, que saíram do escopo e não devem
-# entrar nos totais.
+# Mesmas PAs ativas de App Ponto de Apoio/config.PAS_ATIVAS -- cópia
+# manual (as duas aplicações não compartilham código Python), atualizar
+# aqui se a lista oficial de lá mudar. Reduzido de 19 pra 6 em 05/10/2026
+# (só Meli + NESTLE + RENNER) e corrigido em 07/10/2026 (Guilherme: "PA
+# SHOPEE BRE é nosso" -- tinha saído no corte por engano, volta a contar).
+# expedicao_pa ainda tem PA MELI-SMR-SP e PA PEGAKI-VCP-SP no histórico
+# bruto, que saíram do escopo e não devem entrar nos totais.
 PAS_ATIVAS = {
-    "PA MELI-CJM-SP", "PA MELI-BRE-SP", "PA MELI-CJM 14-SP", "PA MELI-CJM 04-SP",
-    "PA MELI-CJM 02-SP", "PA INFRA-SP", "PA VIA-SP", "PA NESTLE-SP",
-    "PA RENNER-CAB-SP", "PA MANDAE-SP", "PA SATELITAL-SP", "PA CEA-SP",
-    "PA OLIST-SP", "PA ESTOCA-VGP-SP", "PA SATELITAL-VGP-SP", "PA CUBBO-EMB-SP",
-    "PA WEPINK-ITP 02-SP", "PA WEPINK-ITP-SP", "PA SHOPEE-BRE-SP",
+    "PA MELI-CJM-SP", "PA MELI-BRE-SP", "PA MELI-CJM 04-SP",
+    "PA MELI-CJM 02-SP", "PA NESTLE-SP", "PA RENNER-CAB-SP",
+    "PA SHOPEE-BRE-SP",
 }
 
 CAPACIDADE_VEICULO_KG = {

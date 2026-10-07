@@ -259,9 +259,20 @@ def dropoff_d1(conn, d1: date) -> list[dict]:
 def transferencia(d2: date, d1: date) -> list[dict]:
     """Mesma janela do e-mail (D-2 a D-1). Linhas sem entrega no período
     (taxa None) ficam de fora, como no print-modelo; ordem = taxa desc,
-    estável (PAs antes das bases em empate)."""
+    estável (PAs antes das bases em empate).
+
+    extrair_transferencia.buscar_transferencia consulta as 19 PAs +
+    14 bases franquia hardcoded lá (BASES_TRANSFERENCIA/
+    BASES_FRANQUIA_TRANSFERENCIA), listas próprias que não acompanham
+    automaticamente os cortes de roster feitos em config.PAS_ATIVAS/
+    extrair_pickup.BASES_PICKUP -- por isso filtra aqui pelas ATIVAS atuais
+    antes de devolver (achado 07/10/2026, Guilherme: "tire o que não é
+    mais" -- a tabela ainda trazia INFRA/MANDAE/CEA/OLIST/COT-SP/OSC-SP/
+    CARAP-SP etc., todas já fora do escopo)."""
     regs = et.buscar_transferencia(d2.isoformat(), d1.isoformat())
     regs = [r for r in regs if r["taxa_pct"] is not None]
+    ativos = PAS_ATIVAS | set(ep.BASES_PICKUP)
+    regs = [r for r in regs if r["base"] in ativos]
     regs.sort(key=lambda r: -r["taxa_pct"])
     return regs
 
