@@ -85,7 +85,7 @@ ORIGEM_PEDIDO_CODE = "D67"  # TikTok
 
 PREENCHIMENTO_HEADER = PatternFill(start_color="C00000", end_color="C00000", fill_type="solid")
 FONTE_HEADER = Font(bold=True, color="FFFFFF")
-CABECALHO_DETALHE = ["Base", "Código da base", "Motorista", "Loja", "Pedido", "Rastreio", "Status", "Criado em", "Prazo"]
+CABECALHO_DETALHE = ["Estação de agendamento", "Comerciante ID", "Nome de comerciante", "Motorista associado", "Contagem de Número da Remessa"]
 
 
 def buscar_tentativa_fora_prazo(dia: date) -> list[dict]:
@@ -153,9 +153,22 @@ def montar_linhas(hoje: date, brutos: list[dict]) -> list[dict]:
 
 
 def montar_excel_detalhado(brutos: list[dict]) -> bytes:
-    """1 linha por pedido fora do prazo, só nossas bases (BASES_PICKUP)."""
-    linhas = [r for r in brutos if (r.get("pickNetworkName") or "").strip() in BASES_PICKUP]
-    linhas.sort(key=lambda r: (r.get("pickNetworkName") or "", r.get("pickStaffName") or ""))
+    """Agrupado igual ao pivot que o Guilherme mostrou (Estação de
+    agendamento/Comerciante ID/Nome de comerciante/Motorista associado +
+    Contagem de Número da Remessa) -- 1 linha por combinação
+    base+comerciante+motorista, só nossas bases (BASES_PICKUP), com a
+    contagem de pedidos fora do prazo daquele grupo."""
+    grupos: dict[tuple, int] = {}
+    nomes: dict[tuple, tuple] = {}
+    for r in brutos:
+        base = (r.get("pickNetworkName") or "").strip()
+        if base not in BASES_PICKUP:
+            continue
+        chave = (base, r.get("merchantId"), r.get("pickStaffName") or "")
+        grupos[chave] = grupos.get(chave, 0) + 1
+        nomes[chave] = (r.get("merchantName"),)
+
+    linhas = sorted(grupos.items(), key=lambda item: (item[0][0], item[0][2] or ""))
 
     wb = Workbook()
     ws = wb.active
@@ -164,14 +177,11 @@ def montar_excel_detalhado(brutos: list[dict]) -> bytes:
     for cel in ws[1]:
         cel.font = FONTE_HEADER
         cel.fill = PREENCHIMENTO_HEADER
-    for r in linhas:
-        ws.append([
-            r.get("pickNetworkName"), r.get("pickNetworkCode"), r.get("pickStaffName"), r.get("merchantName"),
-            r.get("customerOrderId"), r.get("waybillId"), r.get("orderStatus"),
-            r.get("inputTime"), r.get("assessmentTime"),
-        ])
+    for (base, comerciante_id, motorista), contagem in linhas:
+        (nome_comerciante,) = nomes[(base, comerciante_id, motorista)]
+        ws.append([base, comerciante_id, nome_comerciante, motorista, contagem])
     ws.auto_filter.ref = f"A1:{get_column_letter(len(CABECALHO_DETALHE))}{len(linhas) + 1}"
-    for i, largura in enumerate([14, 14, 30, 30, 20, 18, 14, 18, 18], start=1):
+    for i, largura in enumerate([18, 22, 30, 36, 24], start=1):
         ws.column_dimensions[get_column_letter(i)].width = largura
 
     buf = BytesIO()
@@ -189,9 +199,10 @@ def enviar_email_excel(hoje: date, conteudo: bytes, total_linhas: int):
     msg["From"] = remetente
     msg["To"] = ", ".join(destinatarios)
     msg.set_content(
-        f"Segue em anexo o relatório detalhado de pedidos com tentativa de coleta "
-        f"fora do prazo do dia {hoje:%d/%m/%Y} ({total_linhas} pedido(s)), só nossas bases "
-        "(Regional SPS, origem TikTok)."
+        f"Segue em anexo o relatório de pedidos com tentativa de coleta fora do "
+        f"prazo do dia {hoje:%d/%m/%Y} ({total_linhas} pedido(s) no total), agrupado "
+        "por base/comerciante/motorista com a contagem de remessas -- só nossas "
+        "bases (Regional SPS, origem TikTok)."
     )
     msg.add_attachment(
         conteudo, maintype="application",
