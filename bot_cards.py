@@ -115,18 +115,19 @@ def pickup(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
 
 
 def poc(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
-    """Resumo por base da Taxa de Transferência POC (% de pedidos com foto
-    de comprovação de coleta -- bot_poc_21h.py, 07/10/2026). linhas =
-    [{"base", "deveria", "taxa_poc", "pendente"}], ordenado do MELHOR pro
-    PIOR (taxa_poc desc -- pedido do Guilherme, 07/10/2026: "mostrar
-    primeiro quem ta melhor... e o ultimo pior"). Só 2 colunas de dado
-    (mesmo pedido: "mande só a quantidade de POC e a taxa") -- quantidade
-    = pedidos COM foto (epop_total - pendente)."""
-    colunas = [("Base 基地", 3, "left"), ("Quantidade de POC", 2, "right"), ("Taxa POC 签收", 2, "right")]
-    rows = [[_com_bola(regras.faixa_pickup(r["taxa_poc"]), r["base"]), str(max(0, r["deveria"] - r["pendente"])),
-             f"**{fmt_pct(r['taxa_poc'])}**"] for r in linhas]
+    """Resumo por base de "tentativa de coleta fora do prazo" (bot_poc_21h.py,
+    07/10/2026, endpoint timely_collection_rate_detail_new/isOutTime=N).
+    linhas = [{"base", "pendente", "taxa_fora"}] -- "pendente" = quantidade
+    de pedidos fora do prazo (direto, sem inverter), "taxa_fora" = % do
+    volume do dia que ta fora do prazo. Ordenado do MELHOR pro PIOR
+    (taxa_fora asc -- pedido do Guilherme: "mostrar primeiro quem ta
+    melhor... e o ultimo pior"). Só 2 colunas de dado (mesmo pedido:
+    "mande só a quantidade... e a taxa")."""
+    colunas = [("Base 基地", 3, "left"), ("Fora do prazo", 2, "right"), ("Taxa fora do prazo", 2, "right")]
+    rows = [[_com_bola(regras.faixa_pickup(100 - r["taxa_fora"]), r["base"]), str(r["pendente"]),
+             f"**{fmt_pct(r['taxa_fora'])}**"] for r in linhas]
     return cartoes_tabela(titulo, colunas, rows, rodape,
-                          nota="🟢 98,99% ou mais · 🟠 95% a 98,98% · 🔴 abaixo de 95% (mesma faixa do Pickup)")
+                          nota="🟢 até 1,01% fora do prazo · 🟠 1,02% a 5% · 🔴 acima de 5% (mesma faixa do Pickup, invertida)")
 
 
 def dropoff(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
