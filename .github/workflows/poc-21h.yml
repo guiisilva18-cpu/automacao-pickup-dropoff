@@ -4,8 +4,7 @@ on:
   # cron nativo do GitHub pode atrasar alguns minutos, aceitavel aqui (nao
   # depende de nenhum fechamento de dia, so consulta o JMS ao vivo).
   schedule:
-    - cron: "0 19 * * *" # 16:00 BRT -- rodada de teste extra (Guilherme, 07/10/2026: "vai que da ruim")
-    - cron: "0 0 * * *" # 21:00 BRT -- rodada oficial
+    - cron: "0 2 * * *" # 23:00 BRT -- unico horario (Guilherme, 08/10/2026)
   workflow_dispatch:
     inputs:
       dry_run:
