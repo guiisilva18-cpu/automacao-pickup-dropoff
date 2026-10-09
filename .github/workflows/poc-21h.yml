@@ -40,8 +40,3 @@ jobs:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_SSL: ${{ secrets.DB_SSL }}
-          FEISHU_WEBHOOK_URL_POC_21H: ${{ secrets.FEISHU_WEBHOOK_URL_POC_21H }}
-          FEISHU_KEYWORD_POC_21H: ${{ secrets.FEISHU_KEYWORD_POC_21H }}
-          EMAIL_SENDER: ${{ secrets.EMAIL_SENDER }}
-          EMAIL_APP_PASSWORD: ${{ secrets.EMAIL_APP_PASSWORD }}
-          EMAIL_TO_POC: ${{ secrets.EMAIL_TO_POC }}

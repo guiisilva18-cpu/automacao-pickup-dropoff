@@ -114,21 +114,6 @@ def pickup(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
                           nota="🟢 98,99% ou mais · 🟠 95% a 98,98% · 🔴 abaixo de 95% (coluna Com tentativas)")
 
 
-def poc(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
-    """Resumo por base da Taxa de Transferência POC (% de pedidos com foto
-    de comprovação de coleta, relatório EPOP -- bot_poc_21h.py, voltou pra
-    esse formato 07/10/2026: "NÃO É A TAXA... é o POC APENAS... igual
-    mandou antes"). linhas = [{"base", "deveria", "taxa_poc", "pendente"}],
-    ordenado do MELHOR pro PIOR (taxa_poc desc). Só 2 colunas de dado
-    (Guilherme: "mande só a quantidade de POC e a taxa") -- quantidade =
-    pedidos COM foto (epop_total - pendente)."""
-    colunas = [("Base 基地", 3, "left"), ("Quantidade de POC", 2, "right"), ("Taxa POC 签收", 2, "right")]
-    rows = [[_com_bola(regras.faixa_pickup(r["taxa_poc"]), r["base"]), str(max(0, r["deveria"] - r["pendente"])),
-             f"**{fmt_pct(r['taxa_poc'])}**"] for r in linhas]
-    return cartoes_tabela(titulo, colunas, rows, rodape,
-                          nota="🟢 98,99% ou mais · 🟠 95% a 98,98% · 🔴 abaixo de 95% (mesma faixa do Pickup)")
-
-
 def dropoff(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
     colunas = [("Base 基地", 3, "left"), ("Pendente 待取件", 2, "right"), ("Coletado 取件成功", 2, "right"),
                ("Total 已扫描", 2, "right"), ("Taxa 取件率", 2, "right")]

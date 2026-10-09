@@ -57,6 +57,32 @@ def gravar_pickup(dia: str, registros: list[dict]):
     log.info("pickup_diario gravado no banco para %s (%s bases)", dia, len(registros))
 
 
+def gravar_poc_fora_prazo_detalhe(dia: str, registros: list[dict]):
+    """Detalhe por base/comerciante/motorista de tentativa de coleta fora
+    do prazo (mesma fonte do Excel por e-mail, bot_poc_21h.py) -- alimenta
+    a tela "POC" do App Ponto de Apoio (pedido do Guilherme, 09/10/2026).
+    DELETE + INSERT por dia (mesmo padrão de fechamento_matheus): não tem
+    chave natural estável quando um motorista muda de loja de um dia pro
+    outro, então não dá pra usar ON DUPLICATE KEY UPDATE direito."""
+    conexao = _conectar()
+    try:
+        with conexao.cursor() as cur:
+            cur.execute("DELETE FROM poc_fora_prazo_detalhe WHERE data_referencia = %s", (dia,))
+            if registros:
+                cur.executemany(
+                    "INSERT INTO poc_fora_prazo_detalhe "
+                    "(data_referencia, base, comerciante_id, nome_comerciante, motorista, contagem) "
+                    "VALUES (%s, %s, %s, %s, %s, %s)",
+                    [
+                        (dia, r["base"], r["comerciante_id"], r["nome_comerciante"], r["motorista"], r["contagem"])
+                        for r in registros
+                    ],
+                )
+    finally:
+        conexao.close()
+    log.info("poc_fora_prazo_detalhe gravado no banco para %s (%s linha(s))", dia, len(registros))
+
+
 def gravar_dropoff(dia: str, registros: list[dict]):
     conexao = _conectar()
     try:
