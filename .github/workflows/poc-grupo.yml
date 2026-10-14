@@ -1,0 +1,48 @@
+name: POC Grupo (Feishu)
+
+on:
+  schedule:
+    # cron nativo do GitHub pode atrasar alguns minutos -- aceitavel aqui.
+    - cron: "0 12 * * *" # 09:00 BRT -- resumo do dia
+    - cron: "0 21 * * *" # 18:00 BRT -- aviso
+    - cron: "0 23 * * *" # 20:00 BRT -- aviso
+  workflow_dispatch:
+    inputs:
+      modo:
+        description: "resumo | aviso | teste"
+        type: choice
+        options: [resumo, aviso, teste]
+        default: teste
+
+permissions:
+  contents: read
+
+concurrency:
+  group: poc-grupo-${{ github.event.schedule || inputs.modo }}
+  cancel-in-progress: false
+
+jobs:
+  poc-grupo:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      TZ: America/Sao_Paulo
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: pip install -r requirements-bot.txt
+      - name: Define o modo (resumo as 09h, aviso as 18h/20h)
+        id: modo
+        run: |
+          if [ "${{ github.event.schedule }}" = "0 12 * * *" ]; then
+            echo "valor=resumo" >> "$GITHUB_OUTPUT"
+          elif [ -n "${{ github.event.schedule }}" ]; then
+            echo "valor=aviso" >> "$GITHUB_OUTPUT"
+          else
+            echo "valor=${{ inputs.modo }}" >> "$GITHUB_OUTPUT"
+          fi
+      - run: python bot_poc_grupo.py ${{ steps.modo.outputs.valor }}
+        env:
+          JMS_TOKEN_INDICADORES: ${{ secrets.JMS_TOKEN_INDICADORES }}

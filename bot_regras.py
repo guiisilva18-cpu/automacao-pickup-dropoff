@@ -39,6 +39,17 @@ def faixa_ocupacao(pct: float) -> str:
     return VERDE if pct >= 100 else VERMELHO
 
 
+def faixa_poc(taxa: float) -> str:
+    """Taxa de Transferência POC (EPOP) -- mesma faixa do Dropoff (95/90),
+    nao tem regra propria definida ainda (pedido do Guilherme, 14/10/2026,
+    bot do grupo POC: resumo 09h + aviso 18h/20h)."""
+    if taxa >= 95:
+        return VERDE
+    if taxa >= 90:
+        return LARANJA
+    return VERMELHO
+
+
 def eh_meli(pa: str) -> bool:
     """P.As Meli ficam fora da previsão (Guilherme, 24/09/2026)."""
     return pa.upper().startswith("PA MELI")

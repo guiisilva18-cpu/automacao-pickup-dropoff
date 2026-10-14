@@ -114,6 +114,25 @@ def pickup(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
                           nota="🟢 98,99% ou mais · 🟠 95% a 98,98% · 🔴 abaixo de 95% (coluna Com tentativas)")
 
 
+def poc(linhas: list[dict], titulo: str, rodape: str, template: str = "red") -> list[dict]:
+    """Resumo so da Taxa de Transferencia POC (EPOP) + quanto ficou
+    pendente (sem foto) por base -- bot do grupo POC, resumo 09h / aviso
+    18h e 20h (pedido do Guilherme, 14/10/2026). `linhas` = saida de
+    bot_dados.pickup_d1_ao_vivo (precisa de epop_total/epop_com_imagem)."""
+    total_pendente = sum(max(r["epop_total"] - r["epop_com_imagem"], 0) for r in linhas)
+    colunas = [("Base 基地", 3, "left"), ("Pendente 待拍照", 2, "right"), ("Com foto 已拍照", 2, "right"),
+               ("Taxa POC 签収率", 2, "right")]
+    ordenado = sorted(linhas, key=lambda r: r["taxa_poc"])
+    rows = [[_com_bola(regras.faixa_poc(r["taxa_poc"]), r["base"]),
+             f"**{fmt_int(max(r['epop_total'] - r['epop_com_imagem'], 0))}**",
+             fmt_int(r["epop_com_imagem"]), fmt_pct(r["taxa_poc"])] for r in ordenado]
+    cartoes = cartoes_tabela(titulo, colunas, rows, rodape, topo=kpis([("Pendente de foto (POC)", fmt_int(total_pendente))]),
+                             nota="🟢 95% ou mais · 🟠 90% a 94,99% · 🔴 abaixo de 90%")
+    for c in cartoes:
+        c["header"]["template"] = template
+    return cartoes
+
+
 def dropoff(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
     colunas = [("Base 基地", 3, "left"), ("Pendente 待取件", 2, "right"), ("Coletado 取件成功", 2, "right"),
                ("Total 已扫描", 2, "right"), ("Taxa 取件率", 2, "right")]
