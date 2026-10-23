@@ -28,6 +28,7 @@ Uso:  python bot_feishu.py              envia
 import argparse
 import json
 import logging
+import os
 import sys
 import time
 from datetime import datetime, timedelta
@@ -196,6 +197,30 @@ def enviar_cartoes(wh: "feishu_api.Webhook", texto: str, blocos: list, avisos: l
         wh.enviar_texto("Avisos do dia:\n" + "\n".join(f"- {a}" for a in avisos))
 
 
+EPOP_BASES = ["S-CSVD-SP", "CHM-SP", "JND-SP", "F S-JRG-SP"]
+
+
+def enviar_epop_extra(D: dict):
+    """Card extra de EPOP (taxa de foto/POC) pra um grupo a parte, so
+    dessas 4 bases -- pedido do Guilherme, 23/10/2026 ("mais uma coluna
+    chamada EPOP com as bases que nois temos csvd,chm,jnd fjrg"), pra
+    mandar junto com o resumo da manha. Webhook/palavra-chave propios
+    (nao e o grupo principal do resumo)."""
+    url = os.environ.get("FEISHU_WEBHOOK_EPOP_URL")
+    if not url or not D.get("pickup"):
+        return
+    palavra = os.environ.get("FEISHU_WEBHOOK_EPOP_KEYWORD")
+    wh = feishu_api.Webhook(url=url, palavra=palavra)
+    por_base = {r["base"]: r for r in D["pickup"]}
+    colunas = [("Base", 4, "left"), ("EPOP", 2, "right")]
+    rows = [[base, bc.fmt_pct(por_base[base]["taxa_poc"])] for base in EPOP_BASES if base in por_base]
+    if not rows:
+        return
+    titulo = f"EPOP — Taxa de foto do dia {D['d1']:%d/%m/%Y}"
+    for c in bc.cartoes_tabela(titulo, colunas, rows, wh.rodape):
+        wh.enviar_cartao(c)
+
+
 def salvar_dry_run(D: dict):
     PASTA_SAIDA.mkdir(exist_ok=True)
     print(saudacao(D, teste=False))
@@ -258,6 +283,10 @@ def main(argv=None) -> int:
                                [] if selecionados else D["avisos"])
             else:
                 enviar_imagens(texto, _filtrar(blocos_imagens(D), selecionados), [] if selecionados else D["avisos"])
+            try:
+                enviar_epop_extra(D)
+            except Exception:
+                log.exception("Falha ao enviar card extra do EPOP (não bloqueia o resumo principal).")
             if real and D["prev_bases"] and D["prev_pas"] and not selecionados:
                 bd.gravar_previsao(conn, hoje, D["prev_bases"], D["prev_pas"])
             if real:

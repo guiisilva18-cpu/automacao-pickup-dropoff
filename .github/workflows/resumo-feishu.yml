@@ -58,6 +58,8 @@ jobs:
           FEISHU_DESTINO_TIPO: ${{ secrets.FEISHU_DESTINO_TIPO }}
           FEISHU_BASE_URL: ${{ secrets.FEISHU_BASE_URL }}
           FEISHU_MODO: ${{ secrets.FEISHU_MODO }}
+          FEISHU_WEBHOOK_EPOP_URL: ${{ secrets.FEISHU_WEBHOOK_EPOP_URL }}
+          FEISHU_WEBHOOK_EPOP_KEYWORD: ${{ secrets.FEISHU_WEBHOOK_EPOP_KEYWORD }}
       - uses: actions/upload-artifact@v4
         if: inputs.dry_run
         with:
