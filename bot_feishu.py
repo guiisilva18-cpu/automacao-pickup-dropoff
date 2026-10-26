@@ -197,15 +197,15 @@ def enviar_cartoes(wh: "feishu_api.Webhook", texto: str, blocos: list, avisos: l
         wh.enviar_texto("Avisos do dia:\n" + "\n".join(f"- {a}" for a in avisos))
 
 
-EPOP_BASES = ["S-CSVD-SP", "CHM-SP", "JND-SP", "F S-JRG-SP"]
+EPOP_BASES = ["S-CSVD-SP", "CHM-SP", "JND-SP", "JND 02-SP", "F S-JRG-SP"]
 
 
 def enviar_epop_extra(D: dict):
     """Card extra de EPOP (taxa de foto/POC) pra um grupo a parte, so
-    dessas 4 bases -- pedido do Guilherme, 23/10/2026 ("mais uma coluna
-    chamada EPOP com as bases que nois temos csvd,chm,jnd fjrg"), pra
-    mandar junto com o resumo da manha. Webhook/palavra-chave propios
-    (nao e o grupo principal do resumo)."""
+    dessas bases -- pedido do Guilherme, 23/10/2026 ("mais uma coluna
+    chamada EPOP com as bases que nois temos csvd,chm,jnd fjrg") + JND 02
+    adicionada em 26/10/2026. Webhook/palavra-chave propios (nao e o
+    grupo principal do resumo)."""
     url = os.environ.get("FEISHU_WEBHOOK_EPOP_URL")
     if not url or not D.get("pickup"):
         return
