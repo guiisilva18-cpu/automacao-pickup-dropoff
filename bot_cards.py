@@ -106,10 +106,10 @@ def _com_bola(faixa: str, texto: str) -> str:
 def pickup(linhas: list[dict], titulo: str, rodape: str) -> list[dict]:
     colunas = [("Base 基地", 3, "left"), ("A coletar 应揽收", 2, "right"), ("No prazo 及时", 2, "right"),
                ("Coletados + tentativas", 3, "right"), ("Real 实际", 2, "right"),
-               ("Com tentativas 含尝试", 3, "right"), ("POC 签收", 2, "right")]
+               ("Com tentativas 含尝试", 3, "right")]
     rows = [[_com_bola(regras.faixa_pickup(r["taxa_tentativas"]), r["base"]), str(r["qtd_a_coletar"]),
              str(r["coletada_no_prazo"]), str(r["soma_tentativas"]), fmt_pct(r["taxa_real"]),
-             f"**{fmt_pct(r['taxa_tentativas'])}**", fmt_pct(r["taxa_poc"])] for r in linhas]
+             f"**{fmt_pct(r['taxa_tentativas'])}**"] for r in linhas]
     return cartoes_tabela(titulo, colunas, rows, rodape,
                           nota="🟢 98,99% ou mais · 🟠 95% a 98,98% · 🔴 abaixo de 95% (coluna Com tentativas)")
 
