@@ -1558,5 +1558,70 @@
       "total": 0,
       "taxa_pct": null
     }
+  ],
+  "2026-11-25": [
+    {
+      "base": "CHM-SP",
+      "pendente": 229,
+      "coletado": 2819,
+      "total": 3048,
+      "taxa_pct": 92.49
+    },
+    {
+      "base": "CLP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F JND-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "F S-JRG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "ITUP-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    },
+    {
+      "base": "JND 02-SP",
+      "pendente": 251,
+      "coletado": 4852,
+      "total": 5103,
+      "taxa_pct": 95.08
+    },
+    {
+      "base": "JND-SP",
+      "pendente": 52,
+      "coletado": 113,
+      "total": 165,
+      "taxa_pct": 68.48
+    },
+    {
+      "base": "S-CSVD-SP",
+      "pendente": 1457,
+      "coletado": 9005,
+      "total": 10462,
+      "taxa_pct": 86.07
+    },
+    {
+      "base": "S-FREG-SP",
+      "pendente": 0,
+      "coletado": 0,
+      "total": 0,
+      "taxa_pct": null
+    }
   ]
 }
